@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use App\Repository\ProduitsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -9,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitsRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Produits
 {
@@ -20,7 +22,7 @@ class Produits
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $categorie;
 
@@ -53,6 +55,27 @@ class Produits
      * @ORM\ManyToMany(targetEntity=Recettes::class, inversedBy="ingredients")
      */
     private $recettesAssociees;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+
+    /**
+     * Permet d'initialiser le slug automatiquement s'il n'est pas fourni
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function initializeSlug(){
+        if(empty($this->slug)){
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->nom);
+        }
+    }
+
 
     public function __construct()
     {
@@ -156,6 +179,18 @@ class Produits
     public function removeRecettesAssociee(Recettes $recettesAssociee): self
     {
         $this->recettesAssociees->removeElement($recettesAssociee);
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
