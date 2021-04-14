@@ -1,20 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajout d'un produit{% endblock %}
+{% block title %}Modification du produit : {{produit.nom}}{% endblock %}
 
 {% form_theme myForm _self %}
 
 {% block body %}
     <div class="container">
-        <h1>Ajout d'un nouveau produit</h1>
+        <h1>Modification du produit : {{produit.nom}}</h1>
         {# {{ form(myForm) }} #}
 
         {{ form_start(myForm) }}
 
         {{form_widget(myForm)}}
-        <button type="submit" class="btn btn-primary">Ajouter le produit</button>
+        <button type="submit" class="btn btn-primary">Modification du produit</button>
         {{ form_end(myForm) }}
 
     </div>
 {% endblock %}
-

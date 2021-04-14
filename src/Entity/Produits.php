@@ -7,11 +7,18 @@ use App\Repository\ProduitsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitsRepository::class)
  * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ *  fields={"nom"},
+ *  message="Un autre produit possède déjà ce nom, merci de le modifier"
+ * )
  */
+
 class Produits
 {
     /**
@@ -28,26 +35,31 @@ class Produits
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Valid()
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, max=50, minMessage="Le nom du produit doit faire plus de 2 caractères", maxMessage="Le nom ne peut pas faire plus de 50 caractères")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(min=2, max=50, minMessage="Le nom latin du produit doit faire plus de 2 caractères", maxMessage="Le nom ne peut pas faire plus de 50 caractères")
      */
     private $nomlatin;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, minMessage="Les effets doivent faire plus de 2 caractères")
      */
     private $effets;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=100, minMessage="Votre description doit faire plus de 10 caractères")
      */
     private $description;
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ProduitEditType;
 use App\Form\ProduitType;
 use App\Entity\Produits;
 use App\Repository\ProduitsRepository;
@@ -68,6 +69,48 @@ class ProduitController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de modifier un produit
+     * @Route("/produit/{slug}/edit", name="produit_edit")
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param Produits $produit
+     * @return Response
+     */
+    public function edit(Request $request, EntityManagerInterface $manager, Produits $produit)
+    {
+        $form = $this->createForm(ProduitEditType::class, $produit);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $produit->setSlug(''); // pour que initialize slug
+
+     //       foreach($produit->getImages() as $image){
+       //         $image->setAd($produit);
+         //       $manager->persist($image);
+           // }
+
+            $manager->persist($produit);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "Le produit <strong>{$produit->getNom()}</strong> a bien été modifiée"
+            );
+
+            return $this->redirectToRoute('produit_show',[
+                'slug' => $produit->getSlug()
+            ]);
+        }
+
+
+        return $this->render("produit/edit.html.twig",[
+            "produit" => $produit,
+            "myForm" => $form->createView()
+        ]);
+
+    }
 
     /**
      * Permet d'afficher un seul produit
