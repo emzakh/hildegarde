@@ -34,6 +34,7 @@ class AppFixtures extends Fixture
             ->setEmail('max@epse.be')
             ->setPassword($this->encoder->encodePassword($admin,'epse'))
             ->setRoles(['ROLE_ADMIN']);
+
         $manager->persist($admin);
 
 
@@ -50,10 +51,8 @@ class AppFixtures extends Fixture
                 ->setEmail($faker->email)
                 ->setPassword($hash)
                 ;
-
-            $manager->persist($user);
             $users[]= $user; // ajouter l'utilisateur fraichement créé dans le tableau pour l'association avec les recettes
-
+            $manager->persist($user);
         }
 
         $produits = [];
@@ -64,6 +63,7 @@ class AppFixtures extends Fixture
             $categorie = $faker->word;
            // $slug = $slugify->slugify($nom);
             // $image = $faker->imageUrl(500,250);
+
             $effets = $faker->sentence();
             $description = $faker->paragraph(2);
 
@@ -77,8 +77,9 @@ class AppFixtures extends Fixture
                 ->setDescription($description);
 
 
-            $manager->persist($produit);
+
             $produits[] = $produit;
+            $manager->persist($produit);
 
         }
 
@@ -90,7 +91,7 @@ class AppFixtures extends Fixture
             $date = $faker->dateTimeBetween('-6 months', '-4 months');
             $description = $faker->paragraph(2);
             $etapes = $faker->paragraph(5);
-           $ingredients = $produits[rand(0, count($produits))];
+            $ingredients = $faker->randomElements($produits, rand(1, count($produits)));
           //  $commentaires = $faker->paragraph;
           //  $types = $faker->word;
             $author = $users[rand(0, count($users) - 1)];
@@ -100,10 +101,12 @@ class AppFixtures extends Fixture
                 ->setDate($date)
                 ->setDescription($description)
                 ->setEtapes($etapes)
-              ->addIngredient($ingredients)
+
              // ->addCommentaire($commentaires)
              //   ->setTypes($types)
-                ->setAuthor($author);
+                ->setAuthor($author)
+            ->forEachIngredients($ingredients);
+
 
             $manager->persist($recette);
 
@@ -111,10 +114,12 @@ class AppFixtures extends Fixture
             // gestion des commentaires
             if (rand(0, 1)) {
                 $commentaires = new Commentaires();
+                $createdAt = $faker->dateTimeBetween('-6 months', '-4 months');
                 $commentaires->setContenu($faker->paragraph())
                     ->setRating(rand(1, 5))
                     ->setAuthor($author)
-                    ->setRecette($recette);
+                    ->setRecette($recette)
+                    ->setCreatedAt($createdAt);
                 $manager->persist($commentaires);
             }
 

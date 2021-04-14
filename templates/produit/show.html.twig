@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce : {{ produit.nom }}{% endblock %}
+{% block title %}Produit : {{ produit.nom }}{% endblock %}
 
 {% block body %}
 
@@ -13,7 +13,7 @@
             <p>{{ produit.categorie }}</p>
             <p>{{ produit.effets }}</p>
             <p>{{ produit.description }}</p>
-
+            <p>{{ produit.slug }}</p>
         </div>
     <div class="container">
 

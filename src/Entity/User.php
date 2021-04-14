@@ -6,10 +6,18 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Cocur\Slugify\Slugify;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ *  fields={"email"},
+ *  message="email déjà utilisé merci d'en choisir un autre"
+ * )
  */
 class User implements UserInterface
 {
@@ -61,6 +69,19 @@ class User implements UserInterface
      */
     private $slug;
 
+    /**
+     * Permet d'initialiser le slug automatiquement s'il n'est pas fourni
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function initializeSlug(){
+        if(empty($this->slug)){
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->firstName.' '.$this->lastName.' '.rand());
+        }
+    }
     
 
     public function __construct()

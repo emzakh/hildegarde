@@ -6,10 +6,18 @@ use App\Repository\RecettesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=RecettesRepository::class)
+ * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ *  fields={"titre"},
+ *  message="titre déjà utilisé merci d'en choisir un autre"
+ * )
  */
+
 class Recettes
 {
     /**
@@ -63,6 +71,20 @@ class Recettes
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * Permet d'initialiser le slug automatiquement s'il n'est pas fourni
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function initializeSlug(){
+        if(empty($this->slug)){
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->titre);
+        }
+    }
 
     public function __construct()
     {
@@ -140,6 +162,13 @@ class Recettes
         }
 
         return $this;
+    }
+
+    public function forEachIngredients($ingredients)
+    {
+        foreach($ingredients as $ingredient){
+            $this->addIngredient($ingredient);
+        }
     }
 
     public function removeIngredient(Produits $ingredient): self

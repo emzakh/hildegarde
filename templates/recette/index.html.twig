@@ -1,0 +1,81 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos recettes{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="my-3">Liste des recettes</h1>
+        <div class="row">
+            {% for recette in recettes %}
+                {% set url = path('recettes_index', {'slug': recette.slug}) %}
+
+                <div class="col">
+
+
+                    <div class="card bg-light">
+                        <h1>Nom de la recette: </h1>   {{ recette.titre }}
+                    </div>
+
+                   {#  <div class="card bg-light">
+                        <h1>date publication: </h1>   {{ recette.date }}
+                    </div> #}
+
+                    <div class="card bg-light">
+                        <h1>Description : </h1>  {{ recette.description }}
+                    </div>
+                    <div class="card bg-light">
+                        <h1>Etapes: </h1>  {{ recette.etapes }}
+                    </div>
+
+
+                    <div class="card bg-light">
+
+                        <h1>Ingredients</h1>
+                        {% for recette in recette.getIngredients() %}
+                            {{ recette.getNom() }} <br>
+                        {% endfor %}
+                    </div>
+
+
+
+
+
+
+                    {#   <div class="card bg-light">
+                        <h1>Ingrédients : </h1>  {{ recette.ingredients }}
+                    </div>#}
+
+                   {#  <div class="card bg-light">
+                        <h1>Commentaires : </h1>  {{ recette.commentaires }}
+                    </div>#}
+
+                   {#  {% for commentaire in recettes.commentaires %}
+                        <div class="bg-light rounded mb-3 py-3 px-3">
+                            <strong>{{ commentaire.author.firstName }}</strong> a dit:
+                            <blockquote>
+                                {{commentaire.contenu | nl2br }}
+                            </blockquote>
+                            <strong>Note donnée: </strong> {{ commentaire.rating }}
+
+
+                        </div>
+                    {% endfor %}
+                   #}
+
+                {#    <div class="card bg-light">
+                        <h1>Types : </h1>  {{ recette.types }}
+                    </div>#}
+
+                {#    <div class="card bg-light">
+                        <h1>Auteur : </h1> {{ recette.author }}
+                    </div> #}
+
+                    <a href="{{url}}" class="btn btn-secondary">En savoir plus</a>
+
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

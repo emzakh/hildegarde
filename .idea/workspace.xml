@@ -21,8 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a5e40d4e-6093-4198-8f62-b309434e30cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaires.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Recettes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Recettes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ProduitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProduitType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/produit/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +173,7 @@
       <updated>1618151088974</updated>
       <workItem from="1618151090349" duration="11256000" />
       <workItem from="1618215242085" duration="23387000" />
-      <workItem from="1618392408201" duration="9472000" />
+      <workItem from="1618392408201" duration="18741000" />
     </task>
     <servers />
   </component>
@@ -188,10 +193,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618394981716">
+    <state x="705" y="344" key="#Notifications" timestamp="1618404609468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618394981716" />
+    <state x="705" y="344" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1618404609468" />
+    <state x="724" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1618409519312">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="724" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1618409519312" />
+    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618410286659">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618410286659" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1618394295101">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

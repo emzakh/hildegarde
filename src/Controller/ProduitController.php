@@ -47,7 +47,7 @@ class ProduitController extends AbstractController
 
         $form->handleRequest($request);
 
-        //dump($ad);
+
 
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($produit);
