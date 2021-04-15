@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
         $this->encoder = $encoder;
     }
 
-
+    //USER ADMIN
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('FR-fr');
@@ -33,35 +33,45 @@ class AppFixtures extends Fixture
             ->setLastName('Gutierrez Mantione')
             ->setEmail('max@epse.be')
             ->setPassword($this->encoder->encodePassword($admin,'epse'))
-            ->setRoles(['ROLE_ADMIN']);
+            ->setRoles(['ROLE_ADMIN'])
+            ->setPresentation($faker->sentence());
+
 
         $manager->persist($admin);
 
 
 
-        // gestion des utilisateurs
+        // Gestion des users
         $users = [];
+        $genres = ['male','femelle'];
 
         for($u=1; $u <= 10; $u++){
             $user = new User();
+            $genre = $faker->randomElement($genres);
+            $picture = 'https://randomuser.me/api/portraits/';
+            $pictureId = $faker->numberBetween(1,99).'.jpg';
+            $picture .= ($genre == 'male' ? 'men/' : 'women/').$pictureId;
+
             $hash = $this->encoder->encodePassword($user,'password');
 
             $user->setFirstName($faker->firstName())
                 ->setLastName($faker->lastName)
                 ->setEmail($faker->email)
                 ->setPassword($hash)
+                ->setPresentation($faker->sentence())
+                ->setPicture($picture);
                 ;
             $users[]= $user; // ajouter l'utilisateur fraichement créé dans le tableau pour l'association avec les recettes
             $manager->persist($user);
         }
-
+        //gestion des produits
         $produits = [];
         for ($a = 1; $a <= 30; $a++) {
             $produit = new Produits();
             $nom = $faker->word;
             $nomlatin = $faker->word;
             $categorie = $faker->word;
-           // $slug = $slugify->slugify($nom);
+            // $slug = $slugify->slugify($nom);
             // $image = $faker->imageUrl(500,250);
 
             $effets = $faker->sentence();
@@ -77,13 +87,12 @@ class AppFixtures extends Fixture
                 ->setDescription($description);
 
 
-
             $produits[] = $produit;
             $manager->persist($produit);
 
         }
 
-
+            //gestion des recettes
         for ($b = 1; $b <= rand(0, 10); $b++) {
             $recette = new Recettes();
 

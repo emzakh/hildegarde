@@ -30,6 +30,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message="Veuillez renseigner une adresse email valide")
      */
     private $email;
 
@@ -45,6 +46,12 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas correctement confirmé votre mot de passe")
+     */
+    private $passwordConfirm;
+
+    /**
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="author")
      */
     private $commentaires;
@@ -56,11 +63,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner votre prénom")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Vous devez renseigner votre nom")
      */
     private $lastName;
 
@@ -68,6 +77,20 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(message="Veuillez donner une URL valide pour votre avatar")
+     */
+    private $picture;
+
+
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(min=10, minMessage="Votre presentation doit faire au minimum 10 caractères")
+     */
+    private $presentation;
 
     /**
      * Permet d'initialiser le slug automatiquement s'il n'est pas fourni
@@ -263,6 +286,42 @@ class User implements UserInterface
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getPasswordConfirm(): ?string
+    {
+        return $this->passwordConfirm;
+    }
+
+    public function setPasswordConfirm(string $passwordConfirm): self
+    {
+        $this->passwordConfirm = $passwordConfirm;
+
+        return $this;
+    }
+
+    public function getPresentation(): ?string
+    {
+        return $this->presentation;
+    }
+
+    public function setPresentation(?string $presentation): self
+    {
+        $this->presentation = $presentation;
 
         return $this;
     }

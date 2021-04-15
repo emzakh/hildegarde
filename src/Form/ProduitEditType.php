@@ -4,25 +4,19 @@ namespace App\Form;
 
 use App\Entity\Produits;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use App\Form\ImageType;
+use App\Form\ApplicationType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 
-class ProduitEditType extends AbstractType
+
+class ProduitEditType extends ApplicationType
 {
-    private function getConfiguration($label,$placeholder, $options=[]){
-        return array_merge([
-            'label'=>$label,
-            'attr'=> [
-                'placeholder'=>$placeholder
-            ]
-        ], $options);
-    }
 
 
 
