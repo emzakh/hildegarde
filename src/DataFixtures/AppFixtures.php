@@ -32,7 +32,8 @@ class AppFixtures extends Fixture
         $admin->setFirstName('Maximino')
             ->setLastName('Gutierrez Mantione')
             ->setEmail('max@epse.be')
-            ->setPassword($this->encoder->encodePassword($admin,'epse'))
+            ->setPassword($this->encoder->encodePassword($admin,'epse1234'))
+            ->setPasswordConfirm($this->encoder->encodePassword($admin,'epse1234'))
             ->setRoles(['ROLE_ADMIN'])
             ->setPresentation($faker->sentence());
 
@@ -54,10 +55,12 @@ class AppFixtures extends Fixture
 
             $hash = $this->encoder->encodePassword($user,'password');
 
+
             $user->setFirstName($faker->firstName())
                 ->setLastName($faker->lastName)
                 ->setEmail($faker->email)
                 ->setPassword($hash)
+                ->setPasswordConfirm($hash)
                 ->setPresentation($faker->sentence())
                 ->setPicture($picture);
                 ;
