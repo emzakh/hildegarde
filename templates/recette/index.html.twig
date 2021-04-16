@@ -17,9 +17,17 @@
                         <h1>Nom de la recette: </h1>   {{ recette.titre }}
                     </div>
 
-                   {#  <div class="card bg-light">
-                        <h1>date publication: </h1>   {{ recette.date }}
-                    </div> #}
+                    <div class="card bg-light">
+                        <h1>Commentaires: </h1>
+                      {% for commentaire in recette.commentaires %}
+                          <strong>{{ commentaire.author.firstName }}</strong> a dit:
+                          <blockquote>
+                          {{commentaire.contenu | nl2br }}
+                          </blockquote>
+                          <strong>Note donnée: </strong>
+                          {{ commentaire.rating }}
+                     {% endfor %}
+                    </div>
 
                     <div class="card bg-light">
                         <h1>Description : </h1>  {{ recette.description }}
@@ -35,41 +43,11 @@
                         {% for recette in recette.getIngredients() %}
                             {{ recette.getNom() }} <br>
                         {% endfor %}
+                        {#  les deux fonctionnent
+                        {% for ingredient in recette.ingredients %}
+                            {{  ingredient.nom }} <br>
+                        {% endfor %} #}
                     </div>
-
-
-
-
-
-
-                    {#   <div class="card bg-light">
-                        <h1>Ingrédients : </h1>  {{ recette.ingredients }}
-                    </div>#}
-
-                   {#  <div class="card bg-light">
-                        <h1>Commentaires : </h1>  {{ recette.commentaires }}
-                    </div>#}
-
-                   {#  {% for commentaire in recettes.commentaires %}
-                        <div class="bg-light rounded mb-3 py-3 px-3">
-                            <strong>{{ commentaire.author.firstName }}</strong> a dit:
-                            <blockquote>
-                                {{commentaire.contenu | nl2br }}
-                            </blockquote>
-                            <strong>Note donnée: </strong> {{ commentaire.rating }}
-
-
-                        </div>
-                    {% endfor %}
-                   #}
-
-                {#    <div class="card bg-light">
-                        <h1>Types : </h1>  {{ recette.types }}
-                    </div>#}
-
-                {#    <div class="card bg-light">
-                        <h1>Auteur : </h1> {{ recette.author }}
-                    </div> #}
 
                     <a href="{{url}}" class="btn btn-secondary">En savoir plus</a>
 

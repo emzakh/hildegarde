@@ -243,7 +243,7 @@ class AccountController extends AbstractController
             $manager->flush();
             $this->addFlash(
                 'success',
-                'Votre avata a bien été supprimé'
+                'Votre avatar a bien été supprimé'
             );
         }
 

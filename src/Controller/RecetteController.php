@@ -21,7 +21,7 @@ class RecetteController extends AbstractController
         $recettes = $repo->findAll();
 
 
-        return $this->render('recette/login.html.twig', [
+        return $this->render('recette/index.html.twig', [
             'recettes' =>$recettes
 
         ]);
