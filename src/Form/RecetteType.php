@@ -27,7 +27,7 @@ class RecetteType extends ApplicationType
                 ]
             ])
             ->add('description', TextareaType::class, $this->getConfiguration('Description','Description de la recette'))
-            ->add('etapes', TextareaType::class, $this->getConfiguration('Etapes','1. Première étape de votre recette.'))
+            ->add('etapes', TextareaType::class, $this->getConfiguration('Etapes','1. Décrivez les étapes de votre recette...'))
 
 
             ->add('ingredients',  EntityType::class, array(
