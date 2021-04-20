@@ -160,7 +160,7 @@ class AccountController extends AbstractController
                     'Votre mot de passe a bien été modifié'
                 );
 
-                return $this->redirectToRoute('homepage');
+                return $this->redirectToRoute('account_index');
 
             }
         }
@@ -216,7 +216,7 @@ class AccountController extends AbstractController
                 'success',
                 'Votre avatar a bien été modifié'
             );
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('account_index');
 
         }
 

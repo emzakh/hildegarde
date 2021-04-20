@@ -62,7 +62,7 @@ class AppFixtures extends Fixture
                 ->setPassword($hash)
                 ->setPasswordConfirm($hash)
                 ->setPresentation($faker->sentence())
-                ->setPicture($picture);
+                ->setPicture('');
                 ;
             $users[]= $user; // ajouter l'utilisateur fraichement créé dans le tableau pour l'association avec les recettes
             $manager->persist($user);
