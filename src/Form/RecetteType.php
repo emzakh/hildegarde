@@ -29,6 +29,7 @@ class RecetteType extends ApplicationType
             ->add('description', TextareaType::class, $this->getConfiguration('Description','Description de la recette'))
             ->add('etapes', TextareaType::class, $this->getConfiguration('Etapes','1. Première étape de votre recette.'))
 
+
             ->add('ingredients',  EntityType::class, array(
                 'class' => Produits::class,
                 'choice_label' => 'nom',
@@ -38,11 +39,12 @@ class RecetteType extends ApplicationType
             ))
 
 
-            ->add('types', ChoiceType::class, [
-                'choices' => Type::class,
-                'choice_label' => 'nom',
-                'expanded' => true,
-                'multiple' => true
+            ->add('types',ChoiceType::class,[
+                'choices' => [
+                    'Plat'=>'Plat',
+                    'Dessert'=>'Dessert',
+                    'Boisson'=>'Boisson'
+                ]
             ])
 
             ->add('imgRecette', FileType::class, [

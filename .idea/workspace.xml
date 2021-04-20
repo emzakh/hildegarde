@@ -21,18 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a5e40d4e-6093-4198-8f62-b309434e30cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210410125538.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210411145331.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210411150332.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210414113138.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210415111146.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210415124801.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210416131124.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210420150549.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210420150815.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Recettes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Recettes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Type.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/RecetteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RecetteType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TypeRepository.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +147,7 @@
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/pugx/autocompleter-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1r1kfgUd8ztwRXIpPmgV7L4dO8M" />
@@ -216,6 +209,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618932968618" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1618937732570">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618937732570" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1618937732570">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618937732570" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1618937732570">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618937732570" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1618937732570">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618937732570" />
     <state x="775" y="243" key="NewPhpClassDialog" timestamp="1618922916647">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

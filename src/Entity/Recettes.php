@@ -59,7 +59,7 @@ class Recettes
     private $commentaires;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Type::class, mappedBy="liaison")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $types;
 
