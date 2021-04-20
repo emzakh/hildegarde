@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=RecettesRepository::class)
@@ -71,6 +72,13 @@ class Recettes
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Image(mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/gif"}, mimeTypesMessage="Vous devez upload un fichier jpg, png ou gif")
+     * @Assert\File(maxSize="1024k", maxSizeMessage="Taille du fichier trop grande")
+     */
+    private $imgRecette;
 
     /**
      * Permet d'initialiser le slug automatiquement s'il n'est pas fourni
@@ -257,6 +265,18 @@ class Recettes
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getImgRecette(): ?string
+    {
+        return $this->imgRecette;
+    }
+
+    public function setImgRecette(?string $imgRecette): self
+    {
+        $this->imgRecette = $imgRecette;
 
         return $this;
     }
