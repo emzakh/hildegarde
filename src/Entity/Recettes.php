@@ -117,7 +117,17 @@ class Recettes
 
         return $this;
     }
+    public function getTypes(): ?string
+    {
+        return $this->types;
+    }
 
+    public function setTypes(string $types): self
+    {
+        $this->types = $types;
+
+        return $this;
+    }
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
@@ -221,29 +231,6 @@ class Recettes
     /**
      * @return Collection|Type[]
      */
-    public function getTypes(): Collection
-    {
-        return $this->types;
-    }
-
-    public function addType(Type $type): self
-    {
-        if (!$this->types->contains($type)) {
-            $this->types[] = $type;
-            $type->addLiaison($this);
-        }
-
-        return $this;
-    }
-
-    public function removeType(Type $type): self
-    {
-        if ($this->types->removeElement($type)) {
-            $type->removeLiaison($this);
-        }
-
-        return $this;
-    }
 
     public function getAuthor(): ?User
     {
