@@ -2,6 +2,17 @@
 
 {% block title %}Ajout d'une recette{% endblock %}
 
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<style>
+    input, textarea, select {
+        display:block;
+        width:100%;
+    }
+</style>
+{% endblock %}
+
 {% form_theme myForm _self %}
 
 {% block body %}
@@ -18,7 +29,10 @@
     </div>
 {% endblock %}
 {% block javascripts %}
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
+
+</script>
+<script>
         $('.custom-file input').change(function (e) {
             var files = [];
             for (var i = 0; i < $(this)[0].files.length; i++) {
@@ -26,8 +40,6 @@
             }
             $(this).next('.custom-file-label').html(files.join(', '));
         });
-
-
-    </script>
+</script>
 {% endblock %}
 

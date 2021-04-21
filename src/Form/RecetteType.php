@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Produits;
 use App\Entity\Recettes;
 use App\Entity\Type;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -33,8 +34,13 @@ class RecetteType extends ApplicationType
             ->add('ingredients',  EntityType::class, array(
                 'class' => Produits::class,
                 'choice_label' => 'nom',
-                'expanded'  => true,
-                'multiple' => true
+                'expanded'  => false,
+                'multiple' => true,
+                'query_builder' => function (EntityRepository $er){
+                    return $er->createQueryBuilder('t')
+                        ->orderBy('t.nom', 'ASC');
+                },
+                'by_reference' => false
 
             ))
 
