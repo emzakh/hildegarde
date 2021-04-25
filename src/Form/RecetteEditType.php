@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RecetteType extends ApplicationType
+class RecetteEditType extends ApplicationType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -57,8 +57,8 @@ class RecetteType extends ApplicationType
             ])
 
             ->add('imgRecette', FileType::class, [
-            'label' => "Image de la recette (jpg, png, gif)"
-    ]);
+                'label' => "Image de la recette (jpg, png, gif)"
+            ]);
 
 
     }

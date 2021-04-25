@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recette : {{ recette.titre }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <img src="{{ recette.imgRecette }}" alt="">
+
+        <h1>{{recette.titre}}</h1>
+        <p>{{recette.description}}</p>
+        <p>{{ recette.etapes }}</p>
+
+        <p> {{ recette.getTypes() }}</p>
+
+        {% for recette in recette.getIngredients() %}
+            {% set url = path('produit_show', {'slug': recette.getSlug()}) %}
+
+            <a href="{{url}}" class="btn btn-secondary">{{ recette.getNom() }}</a>
+
+            <br>
+        {% endfor %}
+
+
+
+
+
+    </div>
+
+    <div class="container">
+
+
+
+    </div>
+
+{% endblock %}

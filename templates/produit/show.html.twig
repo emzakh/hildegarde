@@ -5,8 +5,14 @@
 {% block body %}
 
         <div class="container">
+            {% if produit.image %}
+                <img src="/uploads/{{ produit.image }}">
 
-            <img src="{{ produit.image }}" alt="">
+            {% else %}
+            <img src="http://placehold.it/300x300">
+            {% endif %}
+
+
 
             <h1>{{produit.nom}}</h1>
             <p>{{produit.nomlatin}}</p>
@@ -14,6 +20,18 @@
             <p>{{ produit.effets }}</p>
             <p>{{ produit.description }}</p>
             <p>{{ produit.slug }}</p>
+
+
+            {% for produit in produit.getRecettesAssociees() %}
+                {% set url = path('recette_edit', {'slug': produit.getSlug()}) %}
+
+                {{ produit.getTitre() }} <br>
+                {{ produit.getSlug() }}
+                <a href="{{url}}" class="btn btn-secondary">En savoir plus</a>
+
+            {% endfor %}
+
+
         </div>
     <div class="container">
 

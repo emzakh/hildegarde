@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Produits;
 use App\Form\ApplicationType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -34,10 +35,11 @@ class ProduitType extends ApplicationType
             ])
             ->add('effets', TextType::class, $this->getConfiguration('Introduction','Donnez une description globale de l\'annonce'))
             ->add('description', TextareaType::class, $this->getConfiguration('Description','Description du produit'))
-            ->add('image', UrlType::class, $this->getConfiguration('URL de l\'image','Donnez l\'adresse de votre image'))
-            ->add('slug', TextType::class, $this->getConfiguration('Slug','Adresse web (automatique)',[
-                'required' => false
-            ]))
+            ->add('image', FileType::class, [
+                'label' => "Image du produit (jpg, png, gif)",
+
+            ])
+
 
 
         ;
