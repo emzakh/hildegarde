@@ -5,6 +5,7 @@
 {% block body %}
     <div class="container">
         <h1>Modification du profil</h1>
+        <img src="{{ app.user.picture }}" alt="avatar de {{app.user.fullName}}">
         <a href="{{ path('account_modifimg') }}"> <h1>Modification de l'avatar</h1></a>
         {{form_start(myForm)}}
         {{form_widget(myForm)}}

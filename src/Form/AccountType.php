@@ -20,9 +20,10 @@ class AccountType extends ApplicationType
             ->add('firstName', TextType::class, $this->getConfiguration("Prénom","Votre prénom..."))
             ->add('lastName', TextType::class, $this->getConfiguration("Nom","Votre nom de famille..."))
             ->add('email', EmailType::class, $this->getConfiguration("Email","Votre adresse email..."))
-          //  ->add('picture', FileType::class, [
-           //     'label' => "Avatar (jpg, png, gif)"
-           // ])
+            ->add('picture', FileType::class, [
+                'label' => "Image du produit (jpg, png, gif)",
+                'data_class'=>null
+            ])
             ->add('presentation', TextType::class, $this->getConfiguration("Introduction","Présentatez-vous !"))
         ;
     }

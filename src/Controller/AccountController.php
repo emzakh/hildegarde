@@ -64,6 +64,22 @@ class AccountController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
+            $file = $form['picture']->getData();
+            if(!empty($file)) {
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
+                try {
+                    $file->move(
+                        $this->getParameter('uploads_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    return $e->getMessage();
+                }
+
+                $user->setPicture($newFilename);
+            }
             // crypter le mot de passe avec l'encoder
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
@@ -110,8 +126,26 @@ class AccountController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $user->setSlug('')
-                ->setPicture($fileName);
+            $file = $form['picture']->getData();
+            if(!empty($file)){
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+                try{
+                    $file->move(
+                        $this->getParameter('uploads_directory'),
+                        $newFilename
+                    );
+                }
+                catch(FileException $e)
+                {
+                    return $e->getMessage();
+                }
+
+                $user->setPicture($newFilename);
+            }
+
+            $user->setSlug('');
             $manager->persist($user);
             $manager->flush();
             $this->addFlash(

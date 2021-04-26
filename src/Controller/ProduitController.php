@@ -35,11 +35,11 @@ class ProduitController extends AbstractController
     /**
      * Permet de créer un produit
      * @Route("/produit/new", name="produit_create")
-     *
      * @param EntityManagerInterface $manager
      * @param Request $request
      * @return Response
      */
+
     public function create(EntityManagerInterface $manager, Request $request)
     {
         $produit = new Produits();
@@ -48,15 +48,37 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
 
 
+            if($form->isSubmitted() && $form->isValid()){
 
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($produit);
-            $manager->flush();
 
-            $this->addFlash(
-                'success',
-                "Le produit <strong>{$produit->getNom()}</strong> a bien été enregistrée"
-            );
+                // on ajoute l'auteur mais attention maintenant il y a un risque de bug si on n'est pas connecté (à corriger)
+             //   $produit->setAuthor($this->getUser());
+                $file = $form['image']->getData();
+                if(!empty($file)){
+                    $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+                    try{
+                        $file->move(
+                            $this->getParameter('uploads_directory'),
+                            $newFilename
+                        );
+                    }
+                    catch(FileException $e)
+                    {
+                        return $e->getMessage();
+                    }
+
+                    $produit->setImage($newFilename);
+                }
+
+                $manager->persist($produit);
+                $manager->flush();
+                $this->addFlash(
+                    'success',
+                    "Le produit <strong>{$produit->getNom()}</strong> a bien été enregistrée"
+                );
+
 
             return $this->redirectToRoute('produit_show',[
                 'slug' => $produit->getSlug()

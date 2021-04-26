@@ -20,20 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5e40d4e-6093-4198-8f62-b309434e30cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/recette/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/recette/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RecetteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produits.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProduitEditType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProduitEditType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProduitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProduitType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RecetteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RecetteType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produit/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produit/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produit/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AccountType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AccountType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RecetteEditType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RecetteEditType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/produit/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/recette/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +182,8 @@
       <workItem from="1618578557495" duration="10898000" />
       <workItem from="1618820973088" duration="1881000" />
       <workItem from="1618920106469" duration="12617000" />
-      <workItem from="1619342043969" duration="16324000" />
+      <workItem from="1619342043969" duration="17138000" />
+      <workItem from="1619438783935" duration="12323000" />
     </task>
     <servers />
   </component>
@@ -215,10 +211,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="724" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1618409519312" />
-    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619351185967">
+    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619440794302">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1619351185967" />
+    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1619440794302" />
     <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618932968618" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1618937732570">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -244,6 +240,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618585565610" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1619448749734">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1619448749734" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1619439385356">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1619439385356" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1618394295101">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

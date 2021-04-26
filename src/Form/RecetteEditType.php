@@ -57,7 +57,8 @@ class RecetteEditType extends ApplicationType
             ])
 
             ->add('imgRecette', FileType::class, [
-                'label' => "Image de la recette (jpg, png, gif)"
+                'label' => "Image de la recette (jpg, png, gif)",
+                'data_class'=>null
             ]);
 
 
