@@ -115,12 +115,15 @@ class AccountController extends AbstractController
 
         $user = $this->getuser(); // récupérer l'utilisateur connecté
         $fileName = $user->getPicture();
-        if(!empty($fileName))
-        {
-            $user->setPicture(
-                new File($this->getParameter('uploads_directory').'/'.$user->getPicture())
-            );
-        }
+      //  if(!empty($fileName))
+       // {
+        //    $user->setPicture(
+             //   new File($this->getParameter('uploads_directory').'/'.$user->getPicture())
+
+          //  );
+        //}
+
+
         $form = $this->createForm(AccountType::class,$user);
         $form->handleRequest($request);
 
