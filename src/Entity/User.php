@@ -53,7 +53,7 @@ class User implements UserInterface
     private $passwordConfirm;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="author")
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="author", orphanRemoval=true)
      */
     private $commentaires;
 
@@ -331,4 +331,15 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString(){
+        return $this->getFullName();
+    }
+
+
+
 }

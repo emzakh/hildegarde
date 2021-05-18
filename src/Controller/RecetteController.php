@@ -9,6 +9,8 @@ use App\Form\RecetteType;
 use App\Repository\RecettesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,7 +38,7 @@ class RecetteController extends AbstractController
     /**
      * Permet de créer une recette
      * @Route("/recette/new", name="recette_create")
-     *
+     * @IsGranted("ROLE_USER")
      * @param EntityManagerInterface $manager
      * @param Request $request
      * @return Response
@@ -70,6 +72,7 @@ class RecetteController extends AbstractController
 
                 $recette->setImgRecette($newFilename);
             }
+            $recette->setAuthor($this->getUser());
             $manager->persist($recette);
             $manager->flush();
 
@@ -92,7 +95,7 @@ class RecetteController extends AbstractController
     /**
      * Permet de modifier une recette
      * @Route("/recette/{slug}/edit", name="recette_edit")
-     *
+     * @Security("(is_granted('ROLE_USER') and user === recette.getAuthor()) or is_granted('ROLE_ADMIN')", message="Cette recette ne vous appartient pas, vous ne pouvez pas la modifier")
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @param Recettes $recette
@@ -145,6 +148,24 @@ class RecetteController extends AbstractController
             "myForm" => $form->createView()
         ]);
 
+    }
+    /**
+     * Permet de supprimer une recette
+     * @Route("/recette/{slug}/delete", name="recette_delete")
+     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Vous n'avez pas le droit d'accèder à cette ressource")
+     * @param Ad $ad
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
+    public function delete(Ad $ad, EntityManagerInterface $manager)
+    {
+        $this->addFlash(
+            'success',
+            "L'annonce <strong>{$ad->getTitle()}</strong> a bien été supprimée"
+        );
+        $manager->remove($ad);
+        $manager->flush();
+        return $this->redirectToRoute("ads_index");
     }
 
     /**

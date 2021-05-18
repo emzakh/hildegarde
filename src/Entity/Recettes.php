@@ -54,7 +54,7 @@ class Recettes
     private $ingredients;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="recette")
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="recette", orphanRemoval=true)
      */
     private $commentaires;
 
@@ -99,6 +99,23 @@ class Recettes
         $this->ingredients = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->types = new ArrayCollection();
+    }
+
+    /**
+     * Permet de récup le notation moyenne de ma recette
+     */
+    public function getAvgRatings()
+    {
+        // calculer la somme des notations
+        // la fonction php array_reduce permet de réduire le tableau à une seule valeur (attention il faut un tableau et pas une array collection d'où l'utilisation de la méthode toArray()) - 2ème paramètre pour la fonction qui va donner chaque valeur à ajouter et le 3ème paramètre c'est la valeur par défaut
+        $sum = array_reduce($this->commentaires->toArray(),function($total,$commentaire){
+            return $total + $commentaire->getRating();
+        },0);
+
+        // faire la division pour avoir la moyenne (ternaire)
+        if(count($this->commentaires) > 0 ) return $moyenne = round($sum / count($this->commentaires));
+
+        return 0;
     }
 
     public function getId(): ?int
@@ -267,4 +284,35 @@ class Recettes
 
         return $this;
     }
+
+    /**
+     * @return Collection|Commentaires[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addComment(Commentaires $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setAd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Commentaires $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getRecette() === $this) {
+                $commentaire->setRecette(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

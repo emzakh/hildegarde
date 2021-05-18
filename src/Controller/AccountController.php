@@ -118,8 +118,7 @@ class AccountController extends AbstractController
       //  if(!empty($fileName))
        // {
         //    $user->setPicture(
-             //   new File($this->getParameter('uploads_directory').'/'.$user->getPicture())
-
+         //   new File($this->getParameter('uploads_directory').'/'.$user->getPicture())
           //  );
         //}
 

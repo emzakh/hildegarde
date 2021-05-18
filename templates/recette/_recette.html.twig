@@ -1,0 +1,54 @@
+{% set url = path('recette_show', {'slug': recette.slug}) %}
+
+
+<div class="col">
+
+
+    <div class="card bg-light">
+        <h1>Nom de la recette: </h1>   {{ recette.titre }}
+    </div>
+
+    <div class="card bg-light">
+        <h1>Commentaires: </h1>
+        {% for commentaire in recette.commentaires %}
+            <strong>{{ commentaire.author.firstName }}</strong> a dit:
+            <blockquote>
+                {{commentaire.contenu | nl2br }}
+            </blockquote>
+            <strong>Note donnée: </strong>
+            {{ commentaire.rating }}
+        {% endfor %}
+    </div>
+
+    <div class="card bg-light">
+        <h1>Description : </h1>  {{ recette.description }}
+    </div>
+    <div class="card bg-light">
+        <h1>Etapes: </h1>  {{ recette.etapes }}
+    </div>
+
+
+    <div class="card bg-light">
+
+        <h1>Ingredients</h1>
+        {% for recette in recette.getIngredients() %}
+            {{ recette.getNom() }} <br>
+        {% endfor %}
+        {#  les deux fonctionnent
+                        {% for ingredient in recette.ingredients %}
+                            {{  ingredient.nom }} <br>
+                        {% endfor %} #}
+    </div>
+
+    <div class="card bg-light">
+        <h1>Types: </h1>
+
+        {{ recette.getTypes() }}
+
+    </div>
+
+    <a href="{{url}}" class="btn btn-secondary">En savoir plus</a>
+
+
+</div>
+

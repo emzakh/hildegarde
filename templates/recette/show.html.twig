@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Recette : {{ recette.titre }}{% endblock %}
+{% block title %}Recette: {{ recette.titre }}{% endblock %}
 
 {% block body %}
 
     <div class="container">
 
         <img src="/uploads/{{ recette.imgRecette }}">
-
+        {% if (app.user and app.user == recette.author) or is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('recette_edit',{'slug': recette.slug})}}" class="btn btn-secondary">Modification de la recette</a>
+            <a href="{{ path('recette_delete',{'slug': recette.slug})}}" class="btn btn-danger" onclick="return confirm('êtes vous sûr de vouloir supprimer la recette: {{recette.titre}}')">Supprimer</a>
+        {% endif %}
         <h1>{{recette.titre}}</h1>
         <p>{{recette.description}}</p>
         <p>{{ recette.etapes }}</p>
-
+        <p> auteur : {{ recette.author }}</p>
         <p> {{ recette.getTypes() }}</p>
 
         {% for recette in recette.getIngredients() %}
@@ -28,9 +31,63 @@
 
     </div>
 
-    <div class="container">
+    <div class="col">
+        {% set a = recette.author %}
+        {# exemple : ad.author.fullName devient a.fullName #}
+        <div class="row mb-3">
+            <div class="col-3">
+                <a href="{{ path('user_show',{'slug': a.slug})}}">
+                    {% if a.picture %}
+                        <img src="/uploads/{{a.picture}}" class="avatar avatar-medium" alt="Avatar de {{a.fullName}}">
+                    {% else %}
+                        <img src="http://placehold.it/300x300" class="avatar avatar-medium" alt="Avatar de {{a.fullName}}">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="col">
+                <a href="{{ path('user_show',{'slug': a.slug})}}">
+                    <h3>{{ a.fullName }}</h3>
+                </a>
+                <span class="badge badge-primary">{{ a.recettes | length }} recettes</span>
+            </div>
+            <div class="col-12 mt-3">
+                {{ a.presentation | raw | nl2br }}
+            </div>
+        </div>
 
+        {# gestion des commentaires #}
+        <hr>
+        {% if recette.commentaires | length > 0 %}
+            <h2 class="mb-3">Commentaires de nos utilisateurs: </h2>
 
+            <div class="alert alert-info">
+                <h4 class="alert-heading text-center">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            Note globale
+                        </div>
+                        <div class="col">
+                            {% include 'partials/rating.html.twig' with {'rating': recette.avgRatings } %}
+                            <br><small>(Cette moyenne est calculée sur {{ recette.commentaires | length }} avis)</small>
+                        </div>
+                    </div>
+                </h4>
+            </div>
+
+            {% for commentaire in recette.commentaires %}
+                <div class="bg-light rounded mb-3 py-3 px-3">
+                    <strong>{{ commentaire.author.firstName }}</strong> a dit:
+                    <blockquote>
+                        {{commentaire.contenu | nl2br }}
+                    </blockquote>
+                    <strong>Note donnée: </strong>
+                    {% include 'partials/rating.html.twig' with {'rating': commentaire.rating, 'exemple':'test'} %}
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2>Cette annonce n'a pas encore reçu de commentaire ...</h2>
+        {% endif %}
 
     </div>
 
