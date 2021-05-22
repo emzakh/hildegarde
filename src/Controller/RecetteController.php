@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 
+use App\Entity\Commentaires;
 use App\Entity\Recettes;
+use App\Form\CommentType;
 use App\Form\RecetteEditType;
 use App\Form\RecetteType;
 use App\Repository\RecettesRepository;
@@ -153,17 +155,17 @@ class RecetteController extends AbstractController
      * Permet de supprimer une recette
      * @Route("/recette/{slug}/delete", name="recette_delete")
      * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Vous n'avez pas le droit d'accèder à cette ressource")
-     * @param Ad $ad
+     * @param Recettes $recette
      * @param EntityManagerInterface $manager
      * @return Response
      */
-    public function delete(Ad $ad, EntityManagerInterface $manager)
+    public function delete(Recettes $recette, EntityManagerInterface $manager)
     {
         $this->addFlash(
             'success',
-            "L'annonce <strong>{$ad->getTitle()}</strong> a bien été supprimée"
+            "L'annonce <strong>{$recette->getTitre()}</strong> a bien été supprimée"
         );
-        $manager->remove($ad);
+        $manager->remove($recette);
         $manager->flush();
         return $this->redirectToRoute("ads_index");
     }
@@ -174,11 +176,28 @@ class RecetteController extends AbstractController
      * @param Recettes $recette
      * @return Response
      */
-    public function show(Recettes $recette)
+    public function show(Recettes $recette, Request $request, EntityManagerInterface $manager)
 
     {
+        $comment = new Commentaires();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+
+            $manager->persist($comment);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre commentaire a bien été pris en compte!'
+            );
+        }
+
         return $this->render('recette/show.html.twig',[
-            'recette' => $recette
+            'recette' => $recette,
+            'myForm' => $form->createView()
         ]);
 
     }

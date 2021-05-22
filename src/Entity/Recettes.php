@@ -118,6 +118,24 @@ class Recettes
         return 0;
     }
 
+    /**
+     * Permet de récupérer le commenaitre d'un auteur par rapport à une annonce
+     *
+     * @param User $author
+     * @return Comment|null
+     */
+    public function getCommentFromAuthor(User $author)
+    {
+        foreach($this->commentaires as $commentaire)
+        {
+            if($commentaire->getAuthor() === $author) return $commentaire;
+        }
+
+        return null;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;

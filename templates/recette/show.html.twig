@@ -15,7 +15,10 @@
         <p>{{recette.description}}</p>
         <p>{{ recette.etapes }}</p>
         <p> auteur : {{ recette.author }}</p>
-        <p> {{ recette.getTypes() }}</p>
+
+        {% for recette in recette.types %}
+        <p> Types : {{ recette.getTypes }}</p>
+        {% endfor %}
 
         {% for recette in recette.getIngredients() %}
             {% set url = path('produit_show', {'slug': recette.getSlug()}) %}
@@ -57,6 +60,23 @@
 
         {# gestion des commentaires #}
         <hr>
+    <div class="alert alert-light" id="comment">
+        {% set comment = recette.commentFromAuthor(app.user) %}
+        {% if comment is not null %}
+            {# déjà commenté , on ne peut pas commenter 2 fois #}
+            <blockquote>
+                {{comment.content}}
+            </blockquote>
+            <strong>Note: </strong>{% include 'partials/rating.html.twig' with {'rating': comment.rating} %}
+        {% else %}
+            {# formulaire pour commenter le voyage #}
+            {{ form_start(myForm)}}
+            {{form_widget(myForm)}}
+            <button type="submit" class="btn btn-success">Confirmer</button>
+            {{form_end(myForm)}}
+        {% endif %}
+    </div>
+
         {% if recette.commentaires | length > 0 %}
             <h2 class="mb-3">Commentaires de nos utilisateurs: </h2>
 
@@ -81,8 +101,7 @@
                         {{commentaire.contenu | nl2br }}
                     </blockquote>
                     <strong>Note donnée: </strong>
-                    {% include 'partials/rating.html.twig' with {'rating': commentaire.rating, 'exemple':'test'} %}
-
+                    {% include 'partials/rating.html.twig' with {'rating': commentaire.rating} %}
                 </div>
             {% endfor %}
         {% else %}
