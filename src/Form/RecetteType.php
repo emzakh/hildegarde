@@ -7,13 +7,13 @@ use App\Entity\Recettes;
 use App\Entity\Type;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RecetteType extends ApplicationType
@@ -57,7 +57,8 @@ class RecetteType extends ApplicationType
             ])
 
             ->add('imgRecette', FileType::class, [
-            'label' => "Image de la recette (jpg, png, gif)"
+            'label' => "Image de la recette (jpg, png, gif)",
+                'data_class' => null
     ]);
 
 
@@ -69,4 +70,8 @@ class RecetteType extends ApplicationType
             'data_class' => Recettes::class,
         ]);
     }
+
+
+
+
 }

@@ -4,7 +4,6 @@
 {% block body %}
     <div class="container">
         <h1>Modifier l'image de {{ app.user.fullName }}</h1>
-        {{ dump(app.user.picture) }}
         <img src="/uploads/{{ app.user.picture }}" alt="avatar de {{app.user.fullName}}">
         {{form_start(form)}}
         {{form_widget(form)}}

@@ -5,8 +5,8 @@
 {% block body %}
 
     <div class="container">
+        <img src="/uploads/{{ recette.imgRecette}}">
 
-        <img src="/uploads/{{ recette.imgRecette }}">
         {% if (app.user and app.user == recette.author) or is_granted('ROLE_ADMIN') %}
             <a href="{{ path('recette_edit',{'slug': recette.slug})}}" class="btn btn-secondary">Modification de la recette</a>
             <a href="{{ path('recette_delete',{'slug': recette.slug})}}" class="btn btn-danger" onclick="return confirm('êtes vous sûr de vouloir supprimer la recette: {{recette.titre}}')">Supprimer</a>
