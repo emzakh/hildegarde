@@ -16,9 +16,9 @@
         <p>{{ recette.etapes }}</p>
         <p> auteur : {{ recette.author }}</p>
 
-        {% for recette in recette.types %}
-        <p> Types : {{ recette.getTypes }}</p>
-        {% endfor %}
+
+        <p> Types : {{ recette.types }}</p>
+
 
         {% for recette in recette.getIngredients() %}
             {% set url = path('produit_show', {'slug': recette.getSlug()}) %}
@@ -60,6 +60,7 @@
 
         {# gestion des commentaires #}
         <hr>
+        {% if app.user %}
     <div class="alert alert-light" id="comment">
         {% set comment = recette.commentFromAuthor(app.user) %}
         {% if comment is not null %}
@@ -69,13 +70,13 @@
             </blockquote>
             <strong>Note: </strong>{% include 'partials/rating.html.twig' with {'rating': comment.rating} %}
         {% else %}
-            {# formulaire pour commenter le voyage #}
             {{ form_start(myForm)}}
             {{form_widget(myForm)}}
             <button type="submit" class="btn btn-success">Confirmer</button>
             {{form_end(myForm)}}
         {% endif %}
     </div>
+        {% endif %}
 
         {% if recette.commentaires | length > 0 %}
             <h2 class="mb-3">Commentaires de nos utilisateurs: </h2>

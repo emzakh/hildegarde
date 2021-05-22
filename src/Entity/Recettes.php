@@ -98,7 +98,7 @@ class Recettes
     {
         $this->ingredients = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
-        $this->types = new ArrayCollection();
+
     }
 
     /**
@@ -120,7 +120,6 @@ class Recettes
 
     /**
      * Permet de récupérer le commentaire d'un auteur par rapport à une recette
-     *
      * @param User $author
      * @return Commentaires|null
      */
@@ -262,10 +261,6 @@ class Recettes
 
         return $this;
     }
-
-    /**
-     * @return Collection|Type[]
-     */
 
     public function getAuthor(): ?User
     {

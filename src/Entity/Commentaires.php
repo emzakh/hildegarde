@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=CommentairesRepository::class)
  * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Commentaires
 {
@@ -39,9 +40,13 @@ class Commentaires
     private $author;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\PrePersist
+     */
 
     public function prePersist()
     {
