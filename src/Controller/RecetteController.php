@@ -173,7 +173,10 @@ class RecetteController extends AbstractController
     /**
      * Permet d'afficher une seule recette
      * @Route("/recette/{slug}", name="recette_show")
+
      * @param Recettes $recette
+     * @param Request $request
+     * @param EntityManagerInterface $manager
      * @return Response
      */
     public function show(Recettes $recette, Request $request, EntityManagerInterface $manager)
@@ -185,7 +188,8 @@ class RecetteController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
-
+            $comment -> setRecette($recette->addComment($comment));
+            $comment ->setAuthor($this->getUser());
             $manager->persist($comment);
             $manager->flush();
 
@@ -201,6 +205,8 @@ class RecetteController extends AbstractController
         ]);
 
     }
+
+
 
 
 }

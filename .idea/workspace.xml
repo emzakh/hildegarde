@@ -24,11 +24,8 @@
       <change beforePath="$PROJECT_DIR$/src/Controller/RecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RecetteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaires.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Recettes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Recettes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ApplicationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ApplicationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/rating.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/rating.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette/_recette.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/_recette.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/recette/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +184,7 @@
       <workItem from="1619535365820" duration="79000" />
       <workItem from="1621247868608" duration="9297000" />
       <workItem from="1621346586657" duration="7980000" />
-      <workItem from="1621674306495" duration="5340000" />
+      <workItem from="1621674306495" duration="11561000" />
     </task>
     <servers />
   </component>

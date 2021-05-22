@@ -119,10 +119,10 @@ class Recettes
     }
 
     /**
-     * Permet de récupérer le commenaitre d'un auteur par rapport à une annonce
+     * Permet de récupérer le commentaire d'un auteur par rapport à une recette
      *
      * @param User $author
-     * @return Comment|null
+     * @return Commentaires|null
      */
     public function getCommentFromAuthor(User $author)
     {
@@ -315,7 +315,7 @@ class Recettes
     {
         if (!$this->commentaires->contains($commentaire)) {
             $this->commentaires[] = $commentaire;
-            $commentaire->setAd($this);
+            $commentaire->setRecette($this);
         }
 
         return $this;

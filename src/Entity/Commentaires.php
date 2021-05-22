@@ -39,11 +39,11 @@ class Commentaires
     private $author;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
 
-    public function prePresist()
+    public function prePersist()
     {
         if(empty($this->createdAt))
         {

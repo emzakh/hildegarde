@@ -65,7 +65,7 @@
         {% if comment is not null %}
             {# déjà commenté , on ne peut pas commenter 2 fois #}
             <blockquote>
-                {{comment.content}}
+                {{comment.contenu}}
             </blockquote>
             <strong>Note: </strong>{% include 'partials/rating.html.twig' with {'rating': comment.rating} %}
         {% else %}
