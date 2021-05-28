@@ -1,120 +1,81 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Edition de la recette: {{recette.titre}}{% endblock %}
+{% block title %}Modification d'une recette{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        input, textarea, select {
+            display:block;
+            width:100%;
+        }
+    </style>
+{% endblock %}
 
 {% form_theme myForm _self %}
 
 {% block body %}
+
     <div class="container">
-        <h1>Modification de la recette {{recette.titre}}</h1>
+        <h1>Modification de la recette</h1>
+        <img src="/uploads/{{ recette.imgRecette}}" class="img-fluid" style="width:200px; height:200px">
 
-        <img src="/uploads/{{ recette.imgRecette}}">
-        <a href="{{path('admin_recettes_index')}}" class="btn btn-secondary my-3">Retour</a>
-        {{form_start(myForm)}}
-        <div class="row">
-            <div class="col">
-                <div class="card bg-light">
-                    <div class="card-header">
-                        <h4 class="card-title">Corriger la recette?</h4>
-                    </div>
-                    <div class="card-body">
-                        {{form_widget(myForm)}}
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-check"></i>
-                            Enregistrer les modifications
-                        </button>
-                    </div>
-                </div>
+        {{ form_start(myForm) }}
+
+        {{form_widget(myForm)}}
+        <button type="submit" class="btn btn-primary">Valider</button>
+        <div class="card bg-light mt-5">
+            <div class="card-header">
+                <h4 class="card-title">Les commentaires</h4>
             </div>
-            <div class="col">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Utilisateur</th>
+                        <th class="test-center">Note</th>
+                        <th>Commentaire</th>
+                        <th class="test-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for comment in recette.commentaires %}
+                        <tr>
+                            <td>{{comment.id}}</td>
+                            <td>{{comment.author.fullName}}</td>
+                            <td class="test-center">{{comment.rating}}</td>
+                            <td class="test-justify">{{comment.contenu | raw | nl2br}}</td>
+                            <td class="test-center">
+                                <a href="#" class="btn btn-success">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
 
-
-                <div class="card bg-light mt-5">
-                    <div class="card-header">
-                        <h4 class="card-title">Les commentaires</h4>
-                    </div>
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Utilisateur</th>
-                                <th class="test-center">Note</th>
-                                <th>Commentaire</th>
-                                <th class="test-center">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for comment in recette.commentaires %}
-                                <tr>
-                                    <td>{{comment.id}}</td>
-                                    <td>{{comment.author.fullName}}</td>
-                                    <td class="test-center">{{comment.rating}}</td>
-                                    <td class="test-justify">{{comment.contenu | raw | nl2br}}</td>
-                                    <td class="test-center">
-                                        <a href="#" class="btn btn-success">
-                                            <i class="fas fa-pen"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-
-                        </table>
-                    </div>
-                </div>
-
-
+                </table>
+            </div>
         </div>
-        {{form_end(myForm)}}
+        {{ form_end(myForm) }}
+
+
     </div>
 {% endblock %}
 
-{% block _annonce_images_widget %}
-    {{ form_widget(form) }}
-{% endblock %}
 
-{% block _annonce_images_entry_row %}
-    <div id="block_{{id}}">
-        {{ form_widget(form) }}
-    </div>
-{% endblock %}
 
-{% block _annonce_images_entry_widget %}
-    <div class="row align-items-center">
-        <div class="col-4">
-            {% if value %}
-                <img src="{{value.url}}" class="img-fluid">
-            {% endif %}
-            <span hidden>{{form_row(form.url)}}</span>
-        </div>
-        <div class="col-6">
-            {{form_row(form.caption)}}
-        </div>
-        <div class="col">
-            <button type="button" class="btn btn-danger" data-action="delete" data-target="#block_{{id}}">
-                <i class="fas fa-trash"></i>
-            </button>
-        </div>
-    </div>
-{% endblock %}
+
+
+
 
 {% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
     <script>
-        const buttonsDel = document.querySelectorAll('[data-action=delete]')
-        buttonsDel.forEach(button => {
-            button.addEventListener("click",(e)=>{
-                const target = button.dataset.target
-                const elementTarget = document.querySelector(target)
-                if(elementTarget)
-                {
-                    elementTarget.remove()
-                }
-            })
-        })
-
-
-          $('.custom-file input').change(function (e) {
+        $('.custom-file input').change(function (e) {
             var files = [];
             for (var i = 0; i < $(this)[0].files.length; i++) {
                 files.push($(this)[0].files[i].name);
@@ -149,3 +110,4 @@
         })
     </script>
 {% endblock %}
+

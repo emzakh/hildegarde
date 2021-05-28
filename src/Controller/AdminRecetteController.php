@@ -6,8 +6,10 @@ use App\Entity\Recettes;
 use App\Form\RecetteEditType;
 use App\Form\RecetteType;
 use App\Repository\RecettesRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,7 +32,7 @@ class AdminRecetteController extends AbstractController
 
 
     /**
-     * Permet d'afficher le formulaire d'édition
+     * Permet de modifier une recette
      * @Route("/admin/recettes/{id}/edit", name="admin_recettes_edit")
      * @param Recettes $recette
      * @param Request $request
@@ -39,7 +41,7 @@ class AdminRecetteController extends AbstractController
      */
     public function edit(Recettes $recette, Request $request, EntityManagerInterface $manager)
     {
-        $form = $this->createForm(RecetteType::class, $recette);
+        $form = $this->createForm(RecetteEditType::class, $recette);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -69,11 +71,36 @@ class AdminRecetteController extends AbstractController
                 "success",
                 "La recette <strong>{$recette->getTitre()}</strong> a bien été modifiée"
             );
+
+            return $this->redirectToRoute('admin_recettes_index',[
+                'id' => $recette->getId()
+            ]);
         }
+
 
         return $this->render("admin/recette/edit.html.twig",[
             'recette' => $recette,
             'myForm' => $form->createView()
         ]);
+    }
+
+
+    /**
+     * Permet de supprimer une recette
+     * @Route("admin/recette/{id}/delete", name="admin_recettes_delete")
+     * @Security("is_granted('ROLE_ADMIN')")
+     * @param Recettes $recette
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
+    public function delete(Recettes $recette, EntityManagerInterface $manager)
+    {
+        $this->addFlash(
+            'success',
+            "La recette <strong>{$recette->getTitre()}</strong> a bien été supprimée"
+        );
+        $manager->remove($recette);
+        $manager->flush();
+        return $this->redirectToRoute("admin_recettes_index");
     }
 }

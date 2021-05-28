@@ -4,8 +4,12 @@ namespace App\Form;
 
 use App\Entity\Produits;
 
-use App\Form\ImageType;
+
+use App\Entity\Recettes;
 use App\Form\ApplicationType;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -41,9 +45,24 @@ class ProduitEditType extends ApplicationType
             ->add('effets', TextType::class, $this->getConfiguration('Introduction','Donnez une description globale de l\'annonce'))
             ->add('description', TextareaType::class, $this->getConfiguration('Description','Description du produit'))
             ->add('image', FileType::class, [
-                'label' => "Image du produit (jpg, png, gif)"
+                'label' => "Image de la recette (jpg, png, gif)",
+                'data_class'=>null
             ])
-            ->add('recettesAssociees')
+         ->add('recettesAssociees',  EntityType::class, array(
+             'class' => Recettes::class,
+             'choice_label' => 'titre',
+             'expanded'  => false,
+             'multiple' => true,
+             'query_builder' => function (EntityRepository $er){
+                 return $er->createQueryBuilder('t')
+                     ->orderBy('t.titre', 'ASC');
+             },
+             'by_reference' => false,
+             'attr' => [
+                 'class' => 'select-tags'
+             ]
+
+         ))
 
 
 

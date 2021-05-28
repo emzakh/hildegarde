@@ -28,7 +28,7 @@
                     </td>
                     <td class="text-center">
                         <a href="{{path('admin_recettes_edit', {'id':recette.id})}}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="{{ path('admin_recettes_delete', {'id':recette.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
             {% endfor %}

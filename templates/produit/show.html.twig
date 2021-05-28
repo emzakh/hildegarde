@@ -21,14 +21,10 @@
             <p>{{ produit.description }}</p>
             <p>{{ produit.slug }}</p>
 
-
+            <p>Recettes associées :</p>
             {% for produit in produit.getRecettesAssociees() %}
                 {% set url = path('recette_edit', {'slug': produit.getSlug()}) %}
-
-                {{ produit.getTitre() }} <br>
-                {{ produit.getSlug() }}
-                <a href="{{url}}" class="btn btn-secondary">En savoir plus</a>
-
+                <a href="{{url}}" class="btn btn-secondary">{{ produit.getTitre() }}</a>
             {% endfor %}
 
 

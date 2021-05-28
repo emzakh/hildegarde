@@ -14,9 +14,11 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RecetteEditType extends ApplicationType
+class RecetteEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -27,8 +29,8 @@ class RecetteEditType extends ApplicationType
                     'placeholder'=>'Titre de la recette'
                 ]
             ])
-            ->add('description', TextareaType::class, $this->getConfiguration('Description','Description de la recette'))
-            ->add('etapes', TextareaType::class, $this->getConfiguration('Etapes','1. Décrivez les étapes de votre recette...'))
+            ->add('description', TextareaType::class)
+            ->add('etapes', TextareaType::class)
 
 
             ->add('ingredients',  EntityType::class, array(
@@ -58,16 +60,22 @@ class RecetteEditType extends ApplicationType
 
             ->add('imgRecette', FileType::class, [
                 'label' => "Image de la recette (jpg, png, gif)",
-                'data_class'=>null
+                'data_class'=>null,
+                'required'=>false,
             ]);
 
 
     }
 
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Recettes::class,
+
         ]);
     }
+
+
+
 }

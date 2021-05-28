@@ -154,7 +154,7 @@ class RecetteController extends AbstractController
     /**
      * Permet de supprimer une recette
      * @Route("/recette/{slug}/delete", name="recette_delete")
-     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Vous n'avez pas le droit d'accèder à cette ressource")
+     * @Security("is_granted('ROLE_USER') and user === recette.getAuthor()", message="Vous n'avez pas le droit d'accèder à cette ressource")
      * @param Recettes $recette
      * @param EntityManagerInterface $manager
      * @return Response
@@ -167,7 +167,7 @@ class RecetteController extends AbstractController
         );
         $manager->remove($recette);
         $manager->flush();
-        return $this->redirectToRoute("ads_index");
+        return $this->redirectToRoute("recettes_index");
     }
 
     /**
