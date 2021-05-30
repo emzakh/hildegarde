@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for produit in produits %}
+            {% for produit in pagination.data %}
                 <tr>
                     <td>{{produit.id}}</td>
                     <td>{{produit.nom}}</td>
@@ -30,5 +30,9 @@
             {% endfor %}
             </tbody>
         </table>
+        {% include 'admin/partials/_pagination.html.twig' with {'route':'admin_produits_index'} %}
+
+
+
     </div>
 {% endblock %}

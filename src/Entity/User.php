@@ -58,7 +58,7 @@ class User implements UserInterface
     private $commentaires;
 
     /**
-     * @ORM\OneToMany(targetEntity=Recettes::class, mappedBy="author")
+     * @ORM\OneToMany(targetEntity=Recettes::class, mappedBy="author", cascade={"remove"})
      */
     private $recettes;
 

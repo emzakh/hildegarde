@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for recette in recettes %}
+            {% for recette in pagination.data %}
                 <tr>
                     <td>{{recette.id}}</td>
                     <td>{{recette.titre}}</td>
@@ -34,5 +34,8 @@
             {% endfor %}
             </tbody>
         </table>
+
+        {% include 'admin/partials/_pagination.html.twig' with {'route':'admin_recettes_index'} %}
+
     </div>
 {% endblock %}

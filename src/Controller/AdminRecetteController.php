@@ -6,6 +6,7 @@ use App\Entity\Recettes;
 use App\Form\RecetteEditType;
 use App\Form\RecetteType;
 use App\Repository\RecettesRepository;
+use App\Service\PaginationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,14 +20,20 @@ class AdminRecetteController extends AbstractController
 {
     /**
      * Permet d'afficher l'ensemble des recettes
-     * @Route("/admin/recettes", name="admin_recettes_index")
+     * @Route("/admin/recettes/{page<\d+>?1}", name="admin_recettes_index")
      * @param RecettesRepository $repo
      * @return Response
      */
-    public function index(RecettesRepository $repo): Response
+    public function index($page, PaginationService $pagination): Response
     {
+
+        $pagination->setEntityClass(Recettes::class)
+            ->setPage($page)
+            ->setLimit(10)
+            ->setRoute('admin_recettes_index');
+
         return $this->render('admin/recette/index.html.twig', [
-            'recettes' => $repo->findAll()
+            'pagination' => $pagination
         ]);
     }
 

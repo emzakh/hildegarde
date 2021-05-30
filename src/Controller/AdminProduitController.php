@@ -6,6 +6,7 @@ use App\Entity\Produits;
 use App\Form\ProduitEditType;
 use App\Form\ProduitType;
 use App\Repository\ProduitsRepository;
+use App\Service\PaginationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,14 +19,18 @@ class AdminProduitController extends AbstractController
 {
     /**
      * Permet d'afficher l'ensemble des produits
-     * @Route("/admin/produits", name="admin_produits_index")
+     * @Route("/admin/produits/{page<\d+>?1}", name="admin_produits_index")
      * @param ProduitsRepository $repo
      * @return Response
      */
-    public function index(ProduitsRepository  $repo): Response
+    public function index($page, PaginationService $pagination): Response
     {
+        $pagination->setEntityClass(Produits::class)
+            ->setPage($page)
+            ->setLimit(10);
+
         return $this->render('admin/produit/index.html.twig', [
-            'produits' => $repo->findAll()
+            'pagination' => $pagination
         ]);
     }
 

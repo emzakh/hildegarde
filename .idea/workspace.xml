@@ -20,22 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5e40d4e-6093-4198-8f62-b309434e30cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/admin/comment/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/comment/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/produit/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/produit/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/PaginationService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/partials/_pagination.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/user/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminCommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminCommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminProduitController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminRecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminRecetteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RecetteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProduitEditType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProduitEditType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RecetteEditType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RecetteEditType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/comment/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/comment/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/recette/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/recette/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/produit/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/recette/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/recette/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produit/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_comment/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_recette/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/header.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +201,9 @@
       <workItem from="1621247868608" duration="9297000" />
       <workItem from="1621346586657" duration="7980000" />
       <workItem from="1621674306495" duration="22385000" />
-      <workItem from="1622195878879" duration="13484000" />
+      <workItem from="1622195878879" duration="17456000" />
+      <workItem from="1622383225840" duration="2231000" />
+      <workItem from="1622385952147" duration="1277000" />
     </task>
     <servers />
   </component>
@@ -234,10 +236,10 @@
     </state>
     <state x="724" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1621691442276" />
     <state x="724" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1618409519312" />
-    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622209868924">
+    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622386738050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1622209868924" />
+    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1622386738050" />
     <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618932968618" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1621352106015">
       <screen x="0" y="0" width="1920" height="1040" />
