@@ -20,17 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5e40d4e-6093-4198-8f62-b309434e30cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/admin/dashboard/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminRecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminRecetteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/comment/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/comment/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/partials/_pagination.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/_pagination.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/recette/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/recette/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/user/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/header.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +192,7 @@
       <workItem from="1622195878879" duration="17456000" />
       <workItem from="1622383225840" duration="2231000" />
       <workItem from="1622385952147" duration="2736000" />
-      <workItem from="1622546070602" duration="1393000" />
+      <workItem from="1622546070602" duration="4376000" />
     </task>
     <servers />
   </component>
