@@ -31,6 +31,13 @@ class AdminRecetteController extends AbstractController
             ->setPage($page)
             ->setLimit(10)
             ->setRoute('admin_recettes_index');
+        /*
+   return $this->render('admin/ad/index.html.twig', [
+       'ads' => $pagination->getData(),
+       'pages' => $pagination->getPages(),
+       'page' => $page
+   ]);
+   */
 
         return $this->render('admin/recette/index.html.twig', [
             'pagination' => $pagination

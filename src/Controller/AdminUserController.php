@@ -19,14 +19,16 @@ class AdminUserController extends AbstractController
     /**
      * Permet d'afficher les utilisateurs
      * @Route("/admin/users/{page<\d+>?1}", name="admin_users_index")
-     * @param UserRepository $repo
+     * @param $page
+     * @param PaginationService $pagination
      * @return Response
      */
     public function index($page, PaginationService $pagination): Response
     {
         $pagination->setEntityClass(User::class)
             ->setPage($page)
-            ->setLimit(10);
+            ->setLimit(10)
+            ->setRoute('admin_users_index');
 
         return $this->render('admin/user/index.html.twig', [
             'pagination' => $pagination
