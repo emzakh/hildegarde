@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\StatsService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,41 +13,18 @@ class AdminDashboardController extends AbstractController
     /**
      * @Route("/admin", name="admin_dashboard_index")
      */
-    public function index(EntityManagerInterface $manager): Response
+    public function index(StatsService $statsService): Response
     {
-        $users = $manager->createQuery('SELECT COUNT(u) FROM App\Entity\User u')
-            ->getSingleScalarResult(); // pour récup une valeur sinon c'est un tableau
-        $produits = $manager->createQuery("SELECT COUNT(p) FROM App\Entity\Produits p")
-            ->getSingleScalarResult();
-        $recettes = $manager->createQuery("SELECT COUNT(r) FROM App\Entity\Recettes r")
-            ->getSingleScalarResult();
-        $commentaires = $manager->createQuery("SELECT COUNT(c) FROM App\Entity\Commentaires c")
-            ->getSingleScalarResult();
 
+        $users = $statsService->getUsersCount();
+        $recettes = $statsService->getRecettesCount();
+        $produits = $statsService->getProduitsCount();
+        $commentaires = $statsService->getCommentsCount();
 
-        $bestRecettes = $manager->createQuery(
-            'SELECT AVG(c.rating) as note, r.titre, r.id, u.firstName, u.lastName
-            FROM App\Entity\Commentaires c
-            JOIN c.recette r
-            JOIN r.author u
-            GROUP BY r
-            ORDER BY note DESC'
-        )
-            ->setMaxResults(5)
-            ->getResult();
+        $bestRecettes = $statsService->getRecettesStats('DESC');
+        $worstRecettes = $statsService->getRecettesStats('ASC');
 
-        $worstRecettes = $manager->createQuery(
-            'SELECT AVG(c.rating) as note, r.titre, r.id, u.firstName, u.lastName
-            FROM App\Entity\Commentaires c
-            JOIN c.recette r
-            JOIN r.author u
-            GROUP BY r
-            ORDER BY note ASC'
-        )
-            ->setMaxResults(5)
-            ->getResult();
-
-
+        // 'stats' => compact('users','ads','bookings','comments')
 
         return $this->render('admin/dashboard/index.html.twig', [
             'stats' => [

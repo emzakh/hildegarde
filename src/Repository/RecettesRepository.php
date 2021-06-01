@@ -19,32 +19,16 @@ class RecettesRepository extends ServiceEntityRepository
         parent::__construct($registry, Recettes::class);
     }
 
-    // /**
-    //  * @return Recettes[] Returns an array of Recettes objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findBestRecettes($limit)
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('r as recette, AVG(c.rating) as avgRatings')
+            ->join('r.commentaires','c')
+            ->groupBy('r')
+            ->orderBy('avgRatings','DESC')
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Recettes
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
