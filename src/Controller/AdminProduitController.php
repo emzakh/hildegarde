@@ -51,7 +51,24 @@ class AdminProduitController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
             $produit->setSlug(''); // pour que initialize slug
+            $file = $form['image']->getData();
+            if(!empty($file)){
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+                try{
+                    $file->move(
+                        $this->getParameter('uploads_directory'),
+                        $newFilename
+                    );
+                }
+                catch(FileException $e)
+                {
+                    return $e->getMessage();
+                }
 
+                $produit->setImage($newFilename);
+            }
             //       foreach($produit->getImages() as $image){
             //         $image->setAd($produit);
             //       $manager->persist($image);

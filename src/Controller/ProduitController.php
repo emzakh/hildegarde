@@ -18,12 +18,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProduitController extends AbstractController
 {
     /**
-     * @Route("/produits/{page<\d+>?1}", name="produits_index")
+     * @Route("/produits/{categorie}/{page<\d+>?1}", name="produits_index")
      * @param $page
      * @param PaginationService $pagination
      * @return Response
      */
-    public function index(Request $request, $page, PaginationService $pagination): Response
+    public function index(Request $request, $page, PaginationService $pagination, $categorie="all"): Response
     {
         //$repo = $this->getDoctrine()->getRepository(Produit::class);
 
@@ -121,6 +121,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
+
     /**
      * Permet de modifier un produit
      * @Route("/produit/{slug}/edit", name="produit_edit")
@@ -136,6 +137,24 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            $file = $form['image']->getData();
+            if(!empty($file)){
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+                try{
+                    $file->move(
+                        $this->getParameter('uploads_directory'),
+                        $newFilename
+                    );
+                }
+                catch(FileException $e)
+                {
+                    return $e->getMessage();
+                }
+
+                $produit->setImage($newFilename);
+            }
             $produit->setSlug(''); // pour que initialize slug
 
      //       foreach($produit->getImages() as $image){
@@ -183,9 +202,12 @@ class ProduitController extends AbstractController
             'produit' => $produit
         ]);
 
-
-
     }
+
+    /**
+     *
+     *
+     */
 
 
 

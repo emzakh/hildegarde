@@ -4,13 +4,13 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="my-3">Liste des produits</h1>
+    <h1 class="my-3">Liste des produits</h1>
     <div class="container">
     <div class="jumbotron mt-3">
 
         {{ form_start(form) }}
 
-        <div class="form-row align-items-end" >
+        <div class="form-row align-items-end">
             <div class="col">
                 {{ form_row(form.nom) }}
 
@@ -43,10 +43,11 @@
                     {% for produit in produits %}
                         <tr>
 
-                            <td>{{produit.nom}}</td>
-                            <td><img src="/uploads/{{ produit.image }}" style="height:50px; width:50px"> </td>
+                            <td>{{ produit.nom }}</td>
+                            <td><img src="/uploads/{{ produit.image }}" style="height:50px; width:50px"></td>
                             <td class="text-center">
-                                <a href="{{path('produit_show', {'slug':produit.slug})}}" class="btn btn-success"><i class="fas fa-external-link-square-alt"></i></a>
+                                <a href="{{ path('produit_show', {'slug':produit.slug}) }}" class="btn btn-success"><i
+                                            class="fas fa-external-link-square-alt"></i></a>
 
                             </td>
                         </tr>
@@ -57,51 +58,39 @@
             {% endif %}
 
 
-
-
         </div>
-        <div class="row">
-
-            {% for produit in pagination.data %}
-                {% set url = path('produit_show', {'slug': produit.slug}) %}
-
-                <div class="col">
-
-
-                        <div class="card bg-light">
-                         <h1>Nom du produit : </h1>   {{ produit.nom }}
-                        </div>
-
-                        <div class="card bg-light">
-
-                                <img src="/uploads/{{ produit.image }}">
 
 
 
-                        </div>
-
-                        <div class="card bg-light">
-                          <h1>Nom latin : </h1>  {{ produit.nomlatin }}
-                        </div>
-                    <div class="card bg-light">
-                        <h1>Catégorie: </h1>  {{ produit.categorie }}
-                    </div>
-
-                        <div class="card bg-light">
-                          <h1>Effets : </h1>  {{ produit.effets }}
-                        </div>
-
-                        <div class="card bg-light">
-                          <h1>Description : </h1>  {{ produit.description }}
-                        </div>
-
-                        <a href="{{url}}" class="btn btn-secondary">En savoir plus</a>
-
-
-                </div>
-            {% endfor %}
-
-        </div>
-        {{ pagination.display() }}
     </div>
+
+    <section id="produitGallery">
+    <div class="container">
+        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto">
+            <h1 class="gallery-title">Produit Gallery</h1>
+        </div>
+        <div>
+            <a href="#" class="btn btn-default filter-button">All</a>
+            <a href="#" class="btn btn-default filter-button">Jardin</a>
+            <a href="#" class="btn btn-default filter-button">Potager</a>
+            <a href="#" class="btn btn-default filter-button">Epices</a>
+        </div>
+    {% for produit in pagination.data %}
+    {% set url = path('produit_show', {'slug': produit.slug}) %}
+
+        <div class="row">
+            <div class="gallery_product col-md-4 filter center">
+                <img src="/uploads/{{ produit.image }}" class="img-fluid">
+                <h1>Nom du produit : </h1> {{ produit.nom }}
+                <h1>Catégorie: </h1> {{ produit.categorie }}
+               <p class="mt-3"><a href="{{ url }}" class="btn btn-default filter-button">En savoir plus</a></p>
+            </div>
+        </div>
+
+
+    {% endfor %}
+    </div>
+    </section>
+
+    {{ pagination.display() }}
 {% endblock %}

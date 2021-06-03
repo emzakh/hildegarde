@@ -5,12 +5,13 @@
 {% block body %}
 
     <div class="container">
-        <img src="/uploads/{{ recette.imgRecette}}">
-
+        <img src="/uploads/{{ recette.imgRecette}}" class="img-fluid" style>
+        <div class="row">
         {% if (app.user and app.user == recette.author) or is_granted('ROLE_ADMIN') %}
             <a href="{{ path('recette_edit',{'slug': recette.slug})}}" class="btn btn-secondary">Modification de la recette</a>
             <a href="{{ path('recette_delete',{'slug': recette.slug})}}" class="btn btn-danger" onclick="return confirm('êtes vous sûr de vouloir supprimer la recette: {{recette.titre}}')">Supprimer</a>
         {% endif %}
+        </div>
         <h1>{{recette.titre}}</h1>
         <p>{{recette.description}}</p>
         <p>{{ recette.etapes }}</p>
@@ -37,26 +38,8 @@
     <div class="col">
         {% set a = recette.author %}
         {# exemple : ad.author.fullName devient a.fullName #}
-        <div class="row mb-3">
-            <div class="col-3">
-                <a href="{{ path('user_show',{'slug': a.slug})}}">
-                    {% if a.picture %}
-                        <img src="/uploads/{{a.picture}}" class="avatar avatar-medium" alt="Avatar de {{a.fullName}}">
-                    {% else %}
-                        <img src="http://placehold.it/300x300" class="avatar avatar-medium" alt="Avatar de {{a.fullName}}">
-                    {% endif %}
-                </a>
-            </div>
-            <div class="col">
-                <a href="{{ path('user_show',{'slug': a.slug})}}">
-                    <h3>{{ a.fullName }}</h3>
-                </a>
-                <span class="badge badge-primary">{{ a.recettes | length }} recettes</span>
-            </div>
-            <div class="col-12 mt-3">
-                {{ a.presentation | raw | nl2br }}
-            </div>
-        </div>
+
+
 
         {# gestion des commentaires #}
         <hr>
