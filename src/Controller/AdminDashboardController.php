@@ -19,7 +19,7 @@ class AdminDashboardController extends AbstractController
         $users = $statsService->getUsersCount();
         $recettes = $statsService->getRecettesCount();
         $produits = $statsService->getProduitsCount();
-        $commentaires = $statsService->getCommentsCount();
+        $commentaires = $statsService->getCommentairesCount();
 
         $bestRecettes = $statsService->getRecettesStats('DESC');
         $worstRecettes = $statsService->getRecettesStats('ASC');

@@ -60,7 +60,7 @@ class Produits
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=100, minMessage="Votre description doit faire plus de 10 caractères")
+     * @Assert\Length(min=20, minMessage="Votre description doit faire plus de 10 caractères")
      */
     private $description;
 

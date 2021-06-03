@@ -83,3 +83,12 @@ body, html{
 .rating i{
     color: goldenrod;
 }
+
+@media screen and (max-width: 991px)
+{
+    .columnResponsive{
+        flex-direction:column;
+        width:100%;
+        flex-wrap:wrap;
+    }
+}

@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\PropertySearch;
 use App\Form\ProduitEditType;
 use App\Form\ProduitType;
 use App\Entity\Produits;
+use App\Form\PropertySearchType;
 use App\Repository\ProduitsRepository;
+use App\Service\PaginationService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,22 +18,49 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProduitController extends AbstractController
 {
     /**
-     * @Route("/produits", name="produits_index")
-     * @param ProduitsRepository $repo
+     * @Route("/produits/{page<\d+>?1}", name="produits_index")
+     * @param $page
+     * @param PaginationService $pagination
      * @return Response
      */
-    public function index(ProduitsRepository $repo): Response
+    public function index(Request $request, $page, PaginationService $pagination): Response
     {
         //$repo = $this->getDoctrine()->getRepository(Produit::class);
 
-        $produits = $repo->findAll();
+        $pagination->setEntityClass(Produits::class)
+            ->setPage($page)
+            ->setLimit(4);
 
-       // dump($produits);
+        $propertySearch = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class, $propertySearch);
+        $form->handleRequest($request);
+        //initialement le tableau des produits est vide,
+        //c.a.d on affiche les articles que lorsque l'utilisateur clique sur le bouton rechercher
+        $produits = [];
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            //on récupère le nom de produit tapé dans le formulaire
+            $nom = $propertySearch->getNom();
+
+            if ($nom != "" )
+                //si on a fourni un nom de produit on affiche tous les produits qui match
+                $produits = $this->getDoctrine()->getRepository(Produits::class)->findBy([
+                    'nom' => $nom,
+
+                ]);
+            else
+                //si si aucun nom n'est fourni on affiche tous les produits
+                $produits = $this->getDoctrine()->getRepository(Produits::class)->findAll();
+        }
         return $this->render('produit/index.html.twig', [
-            'produits' => $produits
+            'pagination' => $pagination,
+            'form' => $form->createView(), 'produits' => $produits
         ]);
     }
+        // dump($produits);
+
+
+
 
     /**
      * Permet de créer un produit
