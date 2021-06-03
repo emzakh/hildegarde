@@ -25,11 +25,21 @@ class ProduitController extends AbstractController
      */
     public function index(Request $request, $page, PaginationService $pagination, $categorie="all"): Response
     {
-        //$repo = $this->getDoctrine()->getRepository(Produit::class);
+     //  $repo = $this->getDoctrine()->getRepository(Produits::class)->findBy(['categorie'=>'Potager']);
+      //  dump($repo);
+        if($categorie == "all"){
+            $pagination->setEntityClass(Produits::class)
+                ->setPage($page)
+                ->setLimit(1);
+        }else{
+            $pagination->setEntityClass(Produits::class)
+                ->setPage($page)
+                ->setCategory($categorie)
+                ->setLimit(1);
+        }
 
-        $pagination->setEntityClass(Produits::class)
-            ->setPage($page)
-            ->setLimit(4);
+
+
 
         $propertySearch = new PropertySearch();
         $form = $this->createForm(PropertySearchType::class, $propertySearch);

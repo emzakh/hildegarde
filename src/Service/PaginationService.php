@@ -21,6 +21,13 @@ class PaginationService {
     private $entityClass;
 
     /**
+     *
+     * @var string
+     */
+    private $category;
+
+
+    /**
      * Le nombre d'enregistrement à récupérer
      *
      * @var integer
@@ -82,6 +89,8 @@ class PaginationService {
         $this->templatePath = $templatePath;
     }
 
+
+
     /**
      * Permet d'afficher le rendu de la navigation au sein d'un template twig !
      *
@@ -97,11 +106,23 @@ class PaginationService {
      */
 
     public function display() {
-        $this->twig->display($this->templatePath, [
-            'page' => $this->currentPage,
-            'pages' => $this->getPages(),
-            'route' => $this->route
-        ]);
+
+        if(empty($this->category)){
+            $this->twig->display($this->templatePath, [
+                'page' => $this->currentPage,
+                'pages' => $this->getPages(),
+                'route' => $this->route,
+                'category' => 'all'
+            ]);
+        }else {
+            $this->twig->display($this->templatePath, [
+                'page' => $this->currentPage,
+                'pages' => $this->getPages(),
+                'route' => $this->route,
+                'category' => $this->category
+            ]);
+        }
+
     }
 
     /**
@@ -123,9 +144,20 @@ class PaginationService {
         }
 
         // 1) Connaitre le total des enregistrements de la table
-        $total = count($this->manager
-            ->getRepository($this->entityClass)
-            ->findAll());
+
+        if(empty($this->category)){
+            $total = count($this->manager
+                ->getRepository($this->entityClass)
+                ->findAll());
+        }else{
+           $total = count($this->manager
+                ->getRepository($this->entityClass)
+                ->findBy(
+                    ['categorie' => $this->category],
+                    []
+                ));
+        }
+
 
         // 2) Faire la division, l'arrondi et le renvoyer
         return ceil($total / $this->limit);
@@ -151,9 +183,20 @@ class PaginationService {
 
         // 2) Demander au repository de trouver les éléments à partir d'un offset et
         // dans la limite d'éléments imposée (voir propriété $limit)
-        return $this->manager
-            ->getRepository($this->entityClass)
-            ->findBy([], [], $this->limit, $offset);
+        if(empty($this->category)){
+            return $this->manager
+                ->getRepository($this->entityClass)
+                ->findBy([], [], $this->limit, $offset);
+        }else{
+            return $this->manager
+                ->getRepository($this->entityClass)
+                ->findBy(
+                    ['categorie' => $this->category],
+                    [],
+                    $this->limit, $offset
+                );
+        }
+
     }
 
     /**
@@ -211,6 +254,22 @@ class PaginationService {
         $this->entityClass = $entityClass;
 
         return $this;
+    }
+
+    /**
+     *
+     */
+    public function setCategory($category){
+        $this->category = $category;
+        return $this;
+    }
+
+    /**
+     *
+     *
+     */
+    public function getCategory() {
+        return $this->category;
     }
 
     /**

@@ -70,10 +70,10 @@
             <h1 class="gallery-title">Produit Gallery</h1>
         </div>
         <div>
-            <a href="#" class="btn btn-default filter-button">All</a>
-            <a href="#" class="btn btn-default filter-button">Jardin</a>
-            <a href="#" class="btn btn-default filter-button">Potager</a>
-            <a href="#" class="btn btn-default filter-button">Epices</a>
+            <a href={{ path('produits_index') }} class="btn btn-default filter-button">All</a>
+            <a href={{ path('produits_index', {'categorie' : 'Jardin'}) }} class="btn btn-default filter-button">Jardin</a>
+            <a href={{ path('produits_index', {'categorie' : 'Potager'}) }} class="btn btn-default filter-button">Potager</a>
+            <a href={{ path('produits_index', {'categorie' : 'Epices'}) }} class="btn btn-default filter-button">Epices</a>
         </div>
     {% for produit in pagination.data %}
     {% set url = path('produit_show', {'slug': produit.slug}) %}
