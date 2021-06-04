@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\PropertySearch;
+use App\Entity\Recettes;
 use App\Form\ProduitEditType;
 use App\Form\ProduitType;
 use App\Entity\Produits;
@@ -23,14 +24,14 @@ class ProduitController extends AbstractController
      * @param PaginationService $pagination
      * @return Response
      */
-    public function index(Request $request, $page, PaginationService $pagination, $categorie="all"): Response
+    public function index($page, PaginationService $pagination, $categorie="all"): Response
     {
      //  $repo = $this->getDoctrine()->getRepository(Produits::class)->findBy(['categorie'=>'Potager']);
       //  dump($repo);
         if($categorie == "all"){
             $pagination->setEntityClass(Produits::class)
                 ->setPage($page)
-                ->setLimit(4);
+                ->setLimit(6);
         }else{
             $pagination->setEntityClass(Produits::class)
                 ->setPage($page)
@@ -41,30 +42,10 @@ class ProduitController extends AbstractController
 
 
 
-        $propertySearch = new PropertySearch();
-        $form = $this->createForm(PropertySearchType::class, $propertySearch);
-        $form->handleRequest($request);
-        //initialement le tableau des produits est vide,
-        //c.a.d on affiche les articles que lorsque l'utilisateur clique sur le bouton rechercher
-        $produits = [];
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            //on récupère le nom de produit tapé dans le formulaire
-            $nom = $propertySearch->getNom();
-
-            if ($nom != "" )
-                //si on a fourni un nom de produit on affiche tous les produits qui match
-                $produits = $this->getDoctrine()->getRepository(Produits::class)->findBy([
-                    'nom' => $nom,
-
-                ]);
-            else
-                //si si aucun nom n'est fourni on affiche tous les produits
-                $produits = $this->getDoctrine()->getRepository(Produits::class)->findAll();
-        }
         return $this->render('produit/index.html.twig', [
             'pagination' => $pagination,
-            'form' => $form->createView(), 'produits' => $produits
+
         ]);
     }
         // dump($produits);
@@ -196,8 +177,8 @@ class ProduitController extends AbstractController
     /**
      * Permet d'afficher un seul produit
      * @Route("/produit/{slug}", name="produit_show")
-     *
      * @param Produits $produit
+     *
      * @return Response
      */
     public function show(Produits $produit)
@@ -209,15 +190,46 @@ class ProduitController extends AbstractController
         //dump($ad);
 
         return $this->render('produit/show.html.twig',[
-            'produit' => $produit
+            'produit' => $produit,
+
         ]);
 
     }
 
     /**
-     *
-     *
+     * Page recherche
+     * @Route("/search", name="produit_search")
+     * @param Request $request
+     * @return Response
      */
+    public function search(Request $request)
+    {
+        $propertySearch = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class, $propertySearch);
+        $form->handleRequest($request);
+        //initialement le tableau des produits est vide,
+        //c.a.d on affiche les articles que lorsque l'utilisateur clique sur le bouton rechercher
+        $produitsSearch = [];
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //on récupère le nom de produit tapé dans le formulaire
+            $nom = $propertySearch->getNom();
+
+            if ($nom != "" )
+                //si on a fourni un nom de produit on affiche tous les produits qui match
+                $produitsSearch = $this->getDoctrine()->getRepository(Produits::class)->findBy([
+                    'nom' => $nom,
+                ]);
+            else
+                //si si aucun nom n'est fourni on affiche tous les produits
+                $produitsSearch = $this->getDoctrine()->getRepository(Produits::class)->findAll();
+        }
+        return $this->render('search/search.html.twig',[
+
+            'form' => $form->createView(),
+            'produits' => $produitsSearch
+        ]);
+    }
 
 
 

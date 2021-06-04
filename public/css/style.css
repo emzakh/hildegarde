@@ -1,44 +1,45 @@
 body, html{
     padding:0;
     margin:0;
+    font-family: 'Raleway', sans-serif;
+
+}
+.container{
+    min-height: 100vh;
 }
 
-.slide {
-    background-image: url("../images/bg.jpg");
-    height: 100vh;
+footer{
+
+    bottom: 0;
     width: 100%;
-    background-position: center;
-    background-size:contain;
+
 }
-.hildegarde{
-    background-image: url("../images/hld.png");
-    background-position: center;
-    background-size:contain;
-    background-repeat: no-repeat;
-    position:absolute;
-    width:300px;
-    height:300px;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+
+
+
+
+.hld{
+    width:50px;
+    height:50px;
     border-radius:50%;
-    transition: opacity 0.5s ease-in-out;
-    opacity : 0.7;
 }
 
-.hildegarde:hover{
-    transition: all 0.5s ease-in-out;
+nav{
 
-    opacity: 1;
-}
-.txtHildegarde{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    margin-top:200px;
 }
 
+
+.titleHomepage{
+    font-family: 'MedievalSharp', cursive;
+
+}
+.subtitleHomepage{
+    font-family: 'Raleway', sans-serif;
+
+}
+.txtPresentation{
+
+}
 .starsimg{
     height: 200px;
     width: 100%;
@@ -46,7 +47,7 @@ body, html{
 }
 
 .annonce-title{
-    padding: 2em;
+
     background-size: cover;
     background-position: center center;
 }
@@ -130,7 +131,35 @@ body, html{
 .gallery_product
 {
     margin-bottom: 30px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+
+.cardProduit{
+    border: 1px #cbcbcb solid;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media screen and (max-width: 991px)

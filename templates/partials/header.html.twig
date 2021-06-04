@@ -1,19 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{ path('homepage')}}">Hildegarde</a>
+    <a class="navbar-brand" href="{{ path('homepage')}}"><img src="/images/hld.png" class="img-fluid hld" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('homepage')}}">Accueil</a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('produits_index') }}">Produits</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('recettes_index') }}">Recettes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('hildegarde') }}">Présentation d'Hildegarde</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('produit_search') }}">Rechercher un produit</a>
             </li>
 
 
