@@ -23,7 +23,7 @@
 
             <p>Recettes associées :</p>
             {% for produit in produit.getRecettesAssociees() %}
-                {% set url = path('recette_edit', {'slug': produit.getSlug()}) %}
+                {% set url = path('recette_show', {'slug': produit.getSlug()}) %}
                 <a href="{{url}}" class="btn btn-secondary">{{ produit.getTitre() }}</a>
             {% endfor %}
 

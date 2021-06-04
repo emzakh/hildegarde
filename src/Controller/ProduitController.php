@@ -30,12 +30,12 @@ class ProduitController extends AbstractController
         if($categorie == "all"){
             $pagination->setEntityClass(Produits::class)
                 ->setPage($page)
-                ->setLimit(1);
+                ->setLimit(4);
         }else{
             $pagination->setEntityClass(Produits::class)
                 ->setPage($page)
                 ->setCategory($categorie)
-                ->setLimit(1);
+                ->setLimit(4);
         }
 
 
