@@ -40,12 +40,48 @@ nav{
 .txtPresentation{
 
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+
+}
+
+.carousel-control-next-icon:after
+{
+    content: '>';
+    font-size: 55px;
+    color: #212529;
+}
+
+.carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 55px;
+    color: #212529;
+}
+
+.carousel-indicators li {
+    background-color: #3b3636;
+}
+
 .starsimg{
     height: 200px;
     width: 100%;
     display: block;
 }
+.txtCarousel{
+    color:#212529;
+    font-size:26px;
 
+}
+
+
+
+.txtCarousel:hover{
+    color:#212529;
+    text-decoration: none;
+}
 .annonce-title{
 
     background-size: cover;

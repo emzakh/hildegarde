@@ -15,7 +15,7 @@
                 {% endif %}
             </div>
 
-            <div class="w-50 bg-light d-flex justify-content-center  flex-column">
+            <div class="w-50 d-flex justify-content-center  flex-column">
 
                  <h1 class="fw-bold">{{ produit.nom }}</h1>
 
@@ -39,43 +39,58 @@
         </div>
 
         <div class="w-100">
+            <div class="text-center text-justify  mt-3">
+             <h2 class="fw-bold">Description</h2>
             <p>{{ produit.description }}</p>
+            </div>
             <hr style="width:100%" color="#cbcbcb">
-            <p>Recettes associées :</p>
-            {% for produit in produit.getRecettesAssociees() %}
-                {% set url = path('recette_show', {'slug': produit.getSlug()}) %}
-                <a href="{{ url }}" class="btn btn-secondary">{{ produit.getTitre() }}</a>
-            {% endfor %}
+
+            <h1 class="fw-bold text-center m-5">Recettes associées :</h1>
+
+
         </div>
 
 
 
-        {#     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    {% for produit in produit.getRecettesAssociees() %}
-                        {% set url = path('recette_show', {'slug': produit.getSlug()}) %}
-                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if loop.index == 1 %}class="active"{% endif %}></li>
-                    {% endfor %}
-                </ol>
-                <div class="carousel-inner">
-                    {% for image in recette.getImgRecette()%}
-                        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                            <img class="img-fluid" src="#" alt="slide">
 
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {% for produit in produit.getRecettesAssociees() %}
+                    {% set url = path('recette_show', {'slug': produit.getSlug()}) %}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if loop.index == 1 %}class="active sliderCarousel" {% endif %}></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+                {% for produit in produit.getRecettesAssociees() %}
+                <div class="carousel-item  {% if loop.index == 1 %}active{% endif %}">
+                    {% set url = path('recette_show', {'slug': produit.getSlug()}) %}
+                    <a href="{{ url }}">
+                        <div class="text-center">
+                        <a href="{{ url }}" class="txtCarousel text-center"><h3>{{ produit.getTitre() }}</h3></a>
                         </div>
+                    <img class="img-fluid mb-5" src="/uploads/{{ produit.getImgRecette() }}" style="width:100%; object-fit: contain; max-height:300px;" alt="slide">
+                        <div class="text-center">{{ produit.getDescription() }}</div>
 
-                    {% endfor %}
+                    </a>
+
+
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                {% endfor %}
             </div>
-        #}
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+
+
 
 
 
