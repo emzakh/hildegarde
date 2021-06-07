@@ -106,6 +106,8 @@ class RecetteController extends AbstractController
     public function edit(Request $request, EntityManagerInterface $manager, Recettes $recette)
     {
         $form = $this->createForm(RecetteEditType::class, $recette);
+        $currentFile = $recette->getImgRecette();
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -127,6 +129,10 @@ class RecetteController extends AbstractController
                 }
 
                 $recette->setImgRecette($newFilename);
+            }else{
+                if(!empty($currentFile)){
+                    $recette->setImgRecette($currentFile);
+                }
             }
             $recette->setSlug(''); // pour que initialize slug
 

@@ -16,11 +16,22 @@
 {% form_theme myForm _self %}
 
 {% block body %}
+    {{ form_start(myForm) }}
     <div class="container">
-        <h1>Ajout d'une nouvelle recette</h1>
-        {# {{ form(myForm) }} #}
+        <h1>Création d'une nouvelle recette</h1>
 
-        {{ form_start(myForm) }}
+
+        <div id="contactForm" class="mt-4"></div>
+        <div class="container-fluid">
+            <div class="col">{{ form_row(myForm.Titre) }}</div>
+            <div class="col descRecette">{{ form_row(myForm.description) }}</div>
+            <div class="col steps" id="autoHeight">{{ form_row(myForm.etapes) }}</div>
+            <div class="col">{{ form_row(myForm.ingredients) }}</div>
+            <div class="col">{{ form_row(myForm.types) }}</div>
+            <div class="col">{{ form_row(myForm.imgRecette) }}</div>
+
+        </div>
+
 
         {{form_widget(myForm)}}
         <button type="submit" class="btn btn-primary">Ajouter la recette</button>

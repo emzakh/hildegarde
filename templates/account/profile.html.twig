@@ -3,13 +3,43 @@
 {% block title %}Modification du profil utilisateur{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Modification du profil</h1>
-        <img src="/uploads/{{ app.user.picture }}" alt="avatar de {{app.user.fullName}}">
-        <a href="{{ path('account_modifimg') }}"> <h1>Modification de l'avatar</h1></a>
-        {{form_start(myForm)}}
-        {{form_widget(myForm)}}
-        <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
-        {{form_end(myForm)}}
-    </div>
+
+
+        {{ form_start(myProfileForm) }}
+        <div class="container">
+            <h1>Modification du profil</h1>
+            <img src="/uploads/{{ app.user.picture }}" alt="avatar de {{app.user.fullName}}" class="mt-5" style="object-fit: contain; max-height:300px;">
+            <a href="{{ path('account_modifimg') }}"> <h1 class="mb-5">Modification de l'avatar</h1></a>
+
+            <div id="contactForm" class="mt-4"></div>
+            <div class="container-fluid">
+                <div class="col">{{ form_row(myProfileForm.firstName) }}</div>
+                <div class="col">{{ form_row(myProfileForm.lastName) }}</div>
+                <div class="col">{{ form_row(myProfileForm.email) }}</div>
+                <div class="col">{{ form_row(myProfileForm.picture) }}</div>
+                <div class="col">{{ form_row(myProfileForm.presentation) }}</div>
+
+            </div>
+
+
+            {{form_widget(myProfileForm)}}
+            <button type="submit" class="btn btn-primary">modif</button>
+            {{ form_end(myProfileForm) }}
+
+        </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $('.custom-file input').change(function (e) {
+            var files = [];
+            for (var i = 0; i < $(this)[0].files.length; i++) {
+                files.push($(this)[0].files[i].name);
+            }
+            $(this).next('.custom-file-label').html(files.join(', '));
+        });
+
+    </script>
 {% endblock %}

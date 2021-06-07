@@ -38,7 +38,6 @@ class AdminProduitController extends AbstractController
     /**
      * Permet de modifier un produit
      * @Route("/produit/{id}/edit", name="admin_produits_edit")
-     *
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @param Produits $produit
@@ -47,9 +46,13 @@ class AdminProduitController extends AbstractController
     public function edit(Request $request, EntityManagerInterface $manager, Produits $produit)
     {
         $form = $this->createForm(ProduitEditType::class, $produit);
+        $currentFile = $produit->getImage();
+
         $form->handleRequest($request);
 
+
         if($form->isSubmitted() && $form->isValid()){
+
             $produit->setSlug(''); // pour que initialize slug
             $file = $form['image']->getData();
             if(!empty($file)){
@@ -68,11 +71,11 @@ class AdminProduitController extends AbstractController
                 }
 
                 $produit->setImage($newFilename);
+            }else{
+                 if(!empty($currentFile)){
+                     $produit->setImage($currentFile);
+                 }
             }
-            //       foreach($produit->getImages() as $image){
-            //         $image->setAd($produit);
-            //       $manager->persist($image);
-            // }
 
             $manager->persist($produit);
             $manager->flush();

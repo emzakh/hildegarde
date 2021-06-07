@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use App\Form\ApplicationType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -21,8 +22,9 @@ class AccountType extends ApplicationType
             ->add('lastName', TextType::class, $this->getConfiguration("Nom","Votre nom de famille..."))
             ->add('email', EmailType::class, $this->getConfiguration("Email","Votre adresse email..."))
             ->add('picture', FileType::class, [
-                'label' => "Image du produit (jpg, png, gif)",
-                'data_class'=>null
+                'label' => "Avatar (jpg, png, gif)",
+                'data_class'=>null,
+                'required'=>false,
             ])
             ->add('presentation', TextType::class, $this->getConfiguration("Introduction","Présentatez-vous !"))
         ;

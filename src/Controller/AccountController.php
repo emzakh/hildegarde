@@ -112,18 +112,9 @@ class AccountController extends AbstractController
      */
     public function profile(Request $request, EntityManagerInterface $manager)
     {
-
-        $user = $this->getuser(); // récupérer l'utilisateur connecté
-        $fileName = $user->getPicture();
-      //  if(!empty($fileName))
-       // {
-        //    $user->setPicture(
-         //   new File($this->getParameter('uploads_directory').'/'.$user->getPicture())
-          //  );
-        //}
-
-
+        $user = $this->getUser(); // récupérer l'utilisateur connecté
         $form = $this->createForm(AccountType::class,$user);
+        $currentFile = $user->getPicture();
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -143,10 +134,12 @@ class AccountController extends AbstractController
                 {
                     return $e->getMessage();
                 }
-
                 $user->setPicture($newFilename);
+            }else{
+                if(!empty($currentFile)){
+                    $user->setPicture($currentFile);
+                }
             }
-
             $user->setSlug('');
             $manager->persist($user);
             $manager->flush();
@@ -158,7 +151,7 @@ class AccountController extends AbstractController
         }
 
         return $this->render("account/profile.html.twig",[
-            'myForm' => $form->createView()
+            'myProfileForm' => $form->createView()
         ]);
 
 

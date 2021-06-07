@@ -56,6 +56,7 @@ class AdminRecetteController extends AbstractController
     public function edit(Recettes $recette, Request $request, EntityManagerInterface $manager)
     {
         $form = $this->createForm(RecetteEditType::class, $recette);
+        $currentFile = $recette->getImgRecette();
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -77,6 +78,10 @@ class AdminRecetteController extends AbstractController
                 }
 
                 $recette->setImgRecette($newFilename);
+            }else{
+                if(!empty($currentFile)){
+                    $recette->setImgRecette($currentFile);
+                }
             }
             $manager->persist($recette);
             $manager->flush();

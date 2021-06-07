@@ -46,7 +46,9 @@ class ProduitEditType extends ApplicationType
             ->add('description', TextareaType::class, $this->getConfiguration('Description','Description du produit'))
             ->add('image', FileType::class, [
                 'label' => "Image de la recette (jpg, png, gif)",
-                'data_class'=>null
+                'data_class'=>null,
+                'required'=> false,
+
             ])
          ->add('recettesAssociees',  EntityType::class, array(
              'class' => Recettes::class,

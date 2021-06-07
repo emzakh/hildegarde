@@ -25,20 +25,44 @@ footer{
 }
 
 nav{
-
+ font-size:20px;
 }
 
 
 .titleHomepage{
     font-family: 'MedievalSharp', cursive;
+    font-size:70px;
+
 
 }
 .subtitleHomepage{
     font-family: 'Raleway', sans-serif;
+    font-size:30px;
 
 }
-.txtPresentation{
 
+.more{
+    font-size:20px;
+}
+.txtPresentation{
+    font-size:20px;
+}
+.txtPresentation h2{
+    font-size:35px;
+}
+
+.produitTitle{
+    font-size:50px;
+    text-decoration: underline;
+}
+.produitSubtitle{
+    font-size:33px;
+}
+.produitTxt{
+font-size:22px;
+}
+.produitDescription{
+    font-size:20px;
 }
 
 .carousel-control-prev-icon,
@@ -47,6 +71,7 @@ nav{
     width: 100px;
 
 }
+
 
 .carousel-control-next-icon:after
 {
@@ -178,7 +203,19 @@ nav{
     border: 1px #cbcbcb solid;
 }
 
+.steps textarea{
+    resize:none;
+    min-height:150px;
+    white-space: pre-wrap;
 
+
+}
+
+.descRecette textarea{
+    resize:none;
+    min-height:100px;
+    white-space: pre-wrap;
+}
 
 
 

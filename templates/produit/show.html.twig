@@ -6,10 +6,11 @@
 
     <div class="container">
 
-        <div class="d-flex">
-            <div class="w-50 ">
+        <div class="d-flex ">
+            <div class="w-50 mt-5">
                 {% if produit.image %}
-                    <img src="/uploads/{{ produit.image }}" style="width:100%; object-fit: contain; max-height:300px;">
+                    <img src="/uploads/{{ produit.image }}" style="width:100%; object-fit: contain; max-height:300px;"
+                         class="mt-5">
                 {% else %}
                     <img src="http://placehold.it/300x300">
                 {% endif %}
@@ -17,21 +18,21 @@
 
             <div class="w-50 d-flex justify-content-center  flex-column">
 
-                 <h1 class="fw-bold">{{ produit.nom }}</h1>
+                <h1 class="fw-bold produitTitle mb-5">{{ produit.nom }}</h1>
 
-                <div class="d-flex flex-column">
-                    <h4 class="fw-bold">Nom Latinus</h4>
-                    <p>{{ produit.nomlatin }}</p>
+                <div class="d-flex flex-column ">
+                    <h4 class="fw-bold produitSubtitle">Nom Latinus</h4>
+                    <p class="produitTxt">{{ produit.nomlatin }}</p>
                 </div>
 
                 <div class="d-flex flex-column">
-                    <h4 class="fw-bold">Catégorie</h4>
-                    <p>{{ produit.categorie }}</p>
+                    <h4 class="fw-bold produitSubtitle">Catégorie</h4>
+                    <p class="produitTxt">{{ produit.categorie }}</p>
                 </div>
 
                 <div class="d-flex flex-column">
-                    <h4 class="fw-bold">Effets</h4>
-                    <p>{{ produit.effets }}</p>
+                    <h4 class="fw-bold produitSubtitle">Effets</h4>
+                    <p class="produitTxt">{{ produit.effets }}</p>
                 </div>
 
 
@@ -40,42 +41,40 @@
 
         <div class="w-100">
             <div class="text-center text-justify  mt-3">
-             <h2 class="fw-bold">Description</h2>
-            <p>{{ produit.description }}</p>
+                <h2 class="fw-bold produitSubtitle">Description</h2>
+                <p class="produitDescription">{{ produit.description }}</p>
             </div>
             <hr style="width:100%" color="#cbcbcb">
 
-            <h1 class="fw-bold text-center m-5">Recettes associées :</h1>
+            <h1 class="fw-bold text-center m-5 ">Recettes associées :</h1>
 
 
         </div>
-
-
-
 
 
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 {% for produit in produit.getRecettesAssociees() %}
                     {% set url = path('recette_show', {'slug': produit.getSlug()}) %}
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if loop.index == 1 %}class="active sliderCarousel" {% endif %}></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}"
+                        {% if loop.index == 1 %}class="active sliderCarousel" {% endif %}></li>
                 {% endfor %}
             </ol>
             <div class="carousel-inner">
                 {% for produit in produit.getRecettesAssociees() %}
-                <div class="carousel-item  {% if loop.index == 1 %}active{% endif %}">
-                    {% set url = path('recette_show', {'slug': produit.getSlug()}) %}
-                    <a href="{{ url }}">
+                    <div class="carousel-item  {% if loop.index == 1 %}active{% endif %}">
+                        {% set url = path('recette_show', {'slug': produit.getSlug()}) %}
                         <div class="text-center">
-                        <a href="{{ url }}" class="txtCarousel text-center"><h3>{{ produit.getTitre() }}</h3></a>
+                            <a href="{{ url }}" class=" text-center produitSubtitle"><h3>{{ produit.getTitre() }}</h3></a>
                         </div>
-                    <img class="img-fluid mb-5" src="/uploads/{{ produit.getImgRecette() }}" style="width:100%; object-fit: contain; max-height:300px;" alt="slide">
-                        <div class="text-center">{{ produit.getDescription() }}</div>
+                        <a href="{{ url }}">
+                            <img class="img-fluid mb-5 " src="/uploads/{{ produit.getImgRecette() }}"
+                                 style="width:100%; object-fit: contain; max-height:300px;" alt="slide">
+                            <div class="text-center mx-5 mb-5 produitDescription">{{ produit.getDescription() }}</div>
+                        </a>
 
-                    </a>
 
-
-                </div>
+                    </div>
                 {% endfor %}
             </div>
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -87,14 +86,6 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-
-
-
-
-
-
-
-
 
 
     </div>

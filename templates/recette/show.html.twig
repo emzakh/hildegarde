@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="container">
-        <img src="/uploads/{{ recette.imgRecette}}" class="img-fluid" style>
+        <img src="/uploads/{{ recette.imgRecette}}" class="img-fluid" style="width:100%; object-fit: contain; max-height:300px;">
         <div class="row">
         {% if (app.user and app.user == recette.author) or is_granted('ROLE_ADMIN') %}
             <a href="{{ path('recette_edit',{'slug': recette.slug})}}" class="btn btn-secondary">Modification de la recette</a>
