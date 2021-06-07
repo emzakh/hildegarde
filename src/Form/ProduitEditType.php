@@ -42,17 +42,17 @@ class ProduitEditType extends ApplicationType
                     'Epices'=>'Epices'
                 ]
             ])
-            ->add('effets', TextType::class, $this->getConfiguration('Introduction','Donnez une description globale de l\'annonce'))
-            ->add('description', TextareaType::class, $this->getConfiguration('Description','Description du produit'))
+            ->add('effets', TextType::class, $this->getConfiguration('Effets','Donnez une description globale du produit'))
+            ->add('description', TextareaType::class, $this->getConfiguration('L\'avis d\'Hildegarde','Description du produit'))
             ->add('image', FileType::class, [
                 'label' => "Image de la recette (jpg, png, gif)",
                 'data_class'=>null,
                 'required'=> false,
-
             ])
          ->add('recettesAssociees',  EntityType::class, array(
              'class' => Recettes::class,
              'choice_label' => 'titre',
+             'required' => false,
              'expanded'  => false,
              'multiple' => true,
              'query_builder' => function (EntityRepository $er){
@@ -63,7 +63,6 @@ class ProduitEditType extends ApplicationType
              'attr' => [
                  'class' => 'select-tags'
              ]
-
          ))
 
 

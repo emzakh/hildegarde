@@ -5,14 +5,28 @@
 {% form_theme myForm _self %}
 
 {% block body %}
+    {{ form_start(myForm) }}
     <div class="container">
-        <h1>Modification du produit : {{produit.nom}}</h1>
-        {# {{ form(myForm) }} #}
+        <h1>Modification du produit</h1>
 
-        {{ form_start(myForm) }}
+
+        <div id="contactForm" class="mt-4"></div>
+        <div class="container-fluid">
+            <div class="col">{{ form_row(myForm.nom) }}</div>
+            <div class="col">{{ form_row(myForm.nomlatin) }}</div>
+            <div class="col steps" id="autoHeight">{{ form_row(myForm.categorie) }}</div>
+            <div class="col">{{ form_row(myForm.effets) }}</div>
+            <div class="col descRecette">{{ form_row(myForm.description) }}</div>
+            <div class="col">{{ form_row(myForm.image) }}</div>
+            <div class="col">{{ form_row(myForm.recettesAssociees) }}</div>
+
+
+
+        </div>
+
 
         {{form_widget(myForm)}}
-        <button type="submit" class="btn btn-primary">Modification du produit</button>
+        <button type="submit" class="btn btn-primary">Modifier le produit</button>
         {{ form_end(myForm) }}
 
     </div>

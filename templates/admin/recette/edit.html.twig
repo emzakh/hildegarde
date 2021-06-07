@@ -17,14 +17,29 @@
 
 {% block body %}
 
+    {{ form_start(myForm) }}
     <div class="container">
         <h1>Modification de la recette</h1>
-        <img src="/uploads/{{ recette.imgRecette}}" class="img-fluid" style="width:200px; height:200px">
 
-        {{ form_start(myForm) }}
+
+        <div id="contactForm" class="mt-4"></div>
+        <div class="container-fluid">
+            <div class="col">{{ form_row(myForm.Titre) }}</div>
+            <div class="col descRecette">{{ form_row(myForm.description) }}</div>
+            <div class="col steps" id="autoHeight">{{ form_row(myForm.etapes) }}</div>
+            <div class="col">{{ form_row(myForm.ingredients) }}</div>
+            <div class="col">{{ form_row(myForm.types) }}</div>
+            <div class="col">{{ form_row(myForm.imgRecette) }}</div>
+
+        </div>
+
 
         {{form_widget(myForm)}}
-        <button type="submit" class="btn btn-primary">Valider</button>
+        <button type="submit" class="btn btn-primary">Modifier la recette</button>
+        {{ form_end(myForm) }}
+
+    </div>
+
         <div class="card bg-light mt-5">
             <div class="card-header">
                 <h4 class="card-title">Les commentaires</h4>

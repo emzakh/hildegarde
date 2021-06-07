@@ -21,7 +21,7 @@
                 <tr>
                     <td>{{produit.id}}</td>
                     <td>{{produit.nom}}</td>
-                    <td><img src="/uploads/{{ produit.image }}" style="height:50px; width:50px"> </td>
+                    <td><img src="/uploads/{{ produit.image }}" style="object-fit: contain; max-height:50px;"> </td>
                     <td class="text-center">
                         <a href="{{path('admin_produits_edit', {'id':produit.id})}}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                         <a href="{{ path('admin_produits_delete', {'id':produit.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>

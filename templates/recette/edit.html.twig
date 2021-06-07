@@ -2,6 +2,7 @@
 
 {% block title %}Modification d'une recette{% endblock %}
 
+
 {% block stylesheets %}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -9,14 +10,10 @@
         input, textarea, select {
             display:block;
             width:100%;
-
         }
-
     </style>
 {% endblock %}
-
 {% form_theme myForm _self %}
-
 {% block body %}
     {{ form_start(myForm) }}
     <div class="container">
@@ -27,7 +24,7 @@
         <div class="container-fluid">
         <div class="col">{{ form_row(myForm.Titre) }}</div>
         <div class="col descRecette">{{ form_row(myForm.description) }}</div>
-        <div class="col steps" id="autoHeight">{{ form_row(myForm.etapes) }}</div>
+        <div class="col steps" id="autoHeight">{{ form_row(myForm.etapes)}}</div>
         <div class="col">{{ form_row(myForm.ingredients) }}</div>
         <div class="col">{{ form_row(myForm.types) }}</div>
         <div class="col">{{ form_row(myForm.imgRecette) }}</div>

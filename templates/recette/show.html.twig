@@ -14,7 +14,7 @@
         </div>
         <h1>{{recette.titre}}</h1>
         <p>{{recette.description}}</p>
-        <p>{{ recette.etapes }}</p>
+        <p>{{ recette.etapes  | raw | nl2br  }}</p>
         <p> auteur : {{ recette.author }}</p>
 
 
