@@ -31,7 +31,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\Email(message="Veuillez renseigner une adresse email valide")
+     * @Assert\Email(message="Veuillez renseigner une adresse email valide",groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $email;
 
@@ -43,12 +44,14 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas correctement confirmé votre mot de passe")
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas correctement confirmé votre mot de passe",groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $passwordConfirm;
 

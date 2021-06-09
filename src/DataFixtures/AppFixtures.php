@@ -26,8 +26,6 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('FR-fr');
-        //$slugify = new Slugify();
-
         $admin = new User();
         $admin->setFirstName('Maximino')
             ->setLastName('Gutierrez Mantione')
@@ -36,7 +34,6 @@ class AppFixtures extends Fixture
             ->setPasswordConfirm($this->encoder->encodePassword($admin,'epse1234'))
             ->setRoles(['ROLE_ADMIN'])
             ->setPresentation($faker->sentence());
-
 
         $manager->persist($admin);
 
@@ -54,7 +51,6 @@ class AppFixtures extends Fixture
             $picture .= ($genre == 'male' ? 'men/' : 'women/').$pictureId;
 
             $hash = $this->encoder->encodePassword($user,'password');
-
 
             $user->setFirstName($faker->firstName())
                 ->setLastName($faker->lastName)

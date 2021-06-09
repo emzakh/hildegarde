@@ -82,7 +82,10 @@ class AccountController extends AbstractController
             }
             // crypter le mot de passe avec l'encoder
             $hash = $encoder->encodePassword($user, $user->getPassword());
+            $hashConfirm = $encoder->encodePassword($user, $user->getPasswordConfirm());
+
             $user->setPassword($hash);
+            $user->setPasswordConfirm($hashConfirm);
 
             $manager->persist($user);
             $manager->flush();
