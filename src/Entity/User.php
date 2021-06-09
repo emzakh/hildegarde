@@ -49,9 +49,8 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas correctement confirmé votre mot de passe",groups={"Registration"})
-     * @Assert\NotBlank(groups={"Registration"})
+     *
      */
     private $passwordConfirm;
 
