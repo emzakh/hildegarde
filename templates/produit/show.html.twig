@@ -46,10 +46,12 @@
             </div>
             <hr style="width:100%" color="#cbcbcb">
 
-            <h1 class="fw-bold text-center m-5 ">Recettes associées :</h1>
+
 
 
         </div>
+        {% if produit.getRecettesAssociees() | length > 0 %}
+        <h1 class="fw-bold text-center m-5 ">Recettes associées :</h1>
 
 
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -77,6 +79,9 @@
                     </div>
                 {% endfor %}
             </div>
+
+            {% if produit.getRecettesAssociees() | length > 1 %}
+
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -85,8 +90,11 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+            {% endif %}
         </div>
-
+        {% else %}
+        <h2 class="text-center mt-5">Ce produit n'a pas encore de recette associée...</h2>
+        {% endif %}
 
     </div>
 

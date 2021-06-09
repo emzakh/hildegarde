@@ -5,7 +5,7 @@ body, html{
 
 }
 .container{
-    min-height: 100vh;
+    min-height: 84vh;
 }
 
 footer{
@@ -218,6 +218,24 @@ font-size:22px;
 }
 
 
+.recetteTxt{
+    font-size:20px;
+}
+
+.recetteSteps{
+    font-size:16px;
+}
+
+
+
+
+@media screen and (max-width:1280px)
+{
+    .recetteIndexMobile{
+        flex-direction: column;
+
+    }
+}
 
 
 
@@ -230,16 +248,12 @@ font-size:22px;
 
 
 
-
-
-
-
-
-@media screen and (max-width: 991px)
+    @media screen and (max-width: 991px)
 {
     .columnResponsive{
         flex-direction:column;
         width:100%;
         flex-wrap:wrap;
     }
+
 }

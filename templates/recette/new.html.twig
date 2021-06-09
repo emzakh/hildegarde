@@ -18,8 +18,7 @@
 {% block body %}
     {{ form_start(myForm) }}
     <div class="container">
-        <h1>Création d'une nouvelle recette</h1>
-
+        <h1 class="display-2 text-center">Création d'une nouvelle recette</h1>
 
         <div id="contactForm" class="mt-4"></div>
         <div class="container-fluid">
@@ -29,12 +28,13 @@
             <div class="col">{{ form_row(myForm.ingredients) }}</div>
             <div class="col">{{ form_row(myForm.types) }}</div>
             <div class="col">{{ form_row(myForm.imgRecette) }}</div>
-
+            <div class="col">
+            <button type="submit" class="btn btn-primary">Ajouter la recette</button>
+            </div>
         </div>
 
 
         {{form_widget(myForm)}}
-        <button type="submit" class="btn btn-primary">Ajouter la recette</button>
         {{ form_end(myForm) }}
 
     </div>

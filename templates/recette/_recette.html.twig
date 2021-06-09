@@ -4,29 +4,29 @@
 <div class="col">
 
 
-    <div class="card bg-light">
-        <img src="/uploads/{{ recette.imgRecette}}" class="img-fluid mx-auto" style="height:300px; object-fit: contain;" >
-        <h1 class="text-center">Nom de la recette: </h1>   <p class="text-center">{{ recette.titre }}</p>
+    <div class="card bg-light" style="min-height:400px;">
+        <h1 class="text-center display-5 mb-5">{{ recette.titre }}</h1>
+        <a href="{{ url }}" class="text-center">
+            <img src="/uploads/{{ recette.imgRecette }}" class="img-fluid mb-5" style="max-height:250px; object-fit: contain;">
+        </a>
     </div>
     <div class="card-header text-center">
         {% if recette.commentaires | length > 0 %}
-            {% include 'partials/rating.html.twig' with {'rating': recette.avgRatings }%} ({{recette.comments | length }} avis)
+            {% include 'partials/rating.html.twig' with {'rating': recette.avgRatings } %} ({{ recette.comments | length }} avis)
         {% else %}
             <small>Pas encore noté</small>
         {% endif %}
     </div>
 
 
-    <div class="card bg-light text-center">
-        <h1>Description : </h1>  {{ recette.description }}
+    <div class="card bg-light text-center" style="min-height:200px;">
+        <h1>Description : </h1>
+        <p class="text-justify mx-2" style="font-size:16px;"> {{ recette.description }}</p>
     </div>
 
 
-
-
-
     <div class="text-center mt-2">
-    <a href="{{url}}" class="btn btn-secondary">En savoir plus</a>
+        <a href="{{ url }}" class="btn btn-secondary">En savoir plus</a>
     </div>
 
 </div>

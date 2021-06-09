@@ -5,17 +5,17 @@
         <h1 class="display-4 text-center titleHomepage mt-5">Hildegarde de Bingen</h1>
         <p class="text-center font-italic subtitleHomepage">"Hildegarde fut une moniale bénédictine au coeur de l'Allemagne médiévale, authentique maîtresse en théologie et grande experte des siences naturelles"</p>
         <div class="col-12 text-center" >
-        <a href={{ path('hildegarde') }} class="more mb-5 ">Lire la suite</a>
+        <a href={{ path('hildegarde') }} class="more mb-5">Lire la suite</a>
         </div>
 
         <div class="col-12 text-center mt-5"><h1>Parcourir les catégories d'ingrédients :</h1></div>
         <div class="col-12 text-center ">
-        <a href={{ path('produits_index', {'categorie' : 'Jardin'}) }} class="btn btn btn-light">Le jardin d'Hildegarde</a>
+        <a href={{ path('produits_index', {'categorie' : 'Jardin'}) }} class="btn btn btn-light fw-bold">Le jardin d'Hildegarde</a>
         <a href={{ path('produits_index', {'categorie' : 'Potager'}) }} class="btn btn btn-light">Le potager d'Hildegarde</a>
         <a href={{ path('produits_index', {'categorie' : 'Epices'}) }} class="btn btn btn-light">Les epices d'Hildegarde</a>
         </div>
             <h1 class='mt-5 mb-4 text-center'>Nos meilleures recettes :</h1>
-            <div class="row">
+            <div class="row recetteIndexMobile">
                 {% for data in recettes %}
                     {% include 'recette/_recette.html.twig' with {'recette':data.recette} %}
                 {% endfor %}

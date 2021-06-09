@@ -7,7 +7,7 @@
         <div class="row align-items-center mb-3">
             <div class="col-3 text-center">
                 {% if user.picture %}
-                    <img src="/uploads/{{user.picture}}" class="avatar mb-3" alt="avatar de {{user.fullName}}">
+                    <img src="/uploads/{{user.picture}}" class="avatar mb-3 mt-3" alt="avatar de {{user.fullName}}" style="object-fit: contain;">
                 {% else %}
                     <img src="http://placehold.it/300x300" class="avatar mb-3" alt="avatar de {{user.fullName}}">
                 {% endif %}
