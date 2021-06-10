@@ -22,6 +22,16 @@
     <list default="true" id="a5e40d4e-6093-4198-8f62-b309434e30cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminProduitController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminRecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminRecetteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RecetteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaires.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Recettes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Recettes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/recette/_recette.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/_recette.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/recette/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +211,9 @@
       <workItem from="1622907795241" duration="2837000" />
       <workItem from="1623061450019" duration="26950000" />
       <workItem from="1623144367446" duration="13854000" />
-      <workItem from="1623230018638" duration="14192000" />
+      <workItem from="1623230018638" duration="15170000" />
+      <workItem from="1623279748053" duration="5805000" />
+      <workItem from="1623337376257" duration="466000" />
     </task>
     <servers />
   </component>

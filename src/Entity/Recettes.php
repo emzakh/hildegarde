@@ -29,6 +29,7 @@ class Recettes
     private $id;
 
     /**
+     * @Assert\Length(min=2, max=40, minMessage="Le titre doit faire plus de 2 caractères", maxMessage="Le titre ne peut pas faire plus de 40 caractères")
      * @ORM\Column(type="string", length=255)
      */
     private $titre;
@@ -39,11 +40,13 @@ class Recettes
     private $date;
 
     /**
+     * @Assert\Length(min=2, max=250, minMessage="La description doit faire plus de 2 caractères", maxMessage="La decription ne peut pas faire plus de 250 caractères")
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
+     * @Assert\Length(min=20, minMessage="La recette doit faire plus de 2 caractères")
      * @ORM\Column(type="text")
      */
     private $etapes;
@@ -54,6 +57,7 @@ class Recettes
     private $ingredients;
 
     /**
+     * @Assert\Length(min=2, max=500, minMessage="Le commentaire doit faire plus de 2 caractères", maxMessage="Le commentaire ne peut pas faire plus de 500 caractères")
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="recette", orphanRemoval=true)
      */
     private $commentaires;

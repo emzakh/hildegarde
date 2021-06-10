@@ -59,7 +59,7 @@ class RecetteController extends AbstractController
             $file = $form['imgRecette']->getData();
             if(!empty($file)){
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $safeFilename = $originalFilename.'-'.rand();
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
                 try{
                     $file->move(
@@ -115,7 +115,7 @@ class RecetteController extends AbstractController
             $file = $form['imgRecette']->getData();
             if(!empty($file)){
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $safeFilename = $originalFilename.'-'.rand();
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
                 try{
                     $file->move(

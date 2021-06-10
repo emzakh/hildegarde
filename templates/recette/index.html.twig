@@ -5,8 +5,8 @@
 
 {% block body %}
     <div class="container container2">
-        <h1 class="display-2 text-center mb-4 mt-4">Recettes</h1>
-        <div class="row recetteIndexMobile">
+        <h1 class="display-2 text-center mb-4 mt-4">Recette</h1>
+        <div class="recetteIndexMobile">
             {% for recette in recettes %}
              {% include 'recette/_recette.html.twig' %}
             {% endfor %}

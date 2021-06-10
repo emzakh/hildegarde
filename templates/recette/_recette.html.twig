@@ -1,10 +1,8 @@
 {% set url = path('recette_show', {'slug': recette.slug}) %}
 
 
-<div class="col">
-
-
-    <div class="card bg-light" style="min-height:400px;">
+<div class="container-fluid" style="min-width:300px;">
+    <div class="card bg-light" style="min-height:400px">
         <h1 class="text-center display-5 mb-5">{{ recette.titre }}</h1>
         <a href="{{ url }}" class="text-center">
             <img src="/uploads/{{ recette.imgRecette }}" class="img-fluid mb-5" style="max-height:250px; object-fit: contain;">
@@ -17,14 +15,10 @@
             <small>Pas encore noté</small>
         {% endif %}
     </div>
-
-
     <div class="card bg-light text-center" style="min-height:200px;">
         <h1>Description : </h1>
         <p class="text-justify mx-2" style="font-size:16px;"> {{ recette.description }}</p>
     </div>
-
-
     <div class="text-center mt-2">
         <a href="{{ url }}" class="btn btn-secondary">En savoir plus</a>
     </div>
