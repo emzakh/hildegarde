@@ -35,7 +35,7 @@ class Recettes
     private $titre;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $date;
 
@@ -57,7 +57,6 @@ class Recettes
     private $ingredients;
 
     /**
-     * @Assert\Length(min=2, max=500, minMessage="Le commentaire doit faire plus de 2 caractères", maxMessage="Le commentaire ne peut pas faire plus de 500 caractères")
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="recette", orphanRemoval=true)
      */
     private $commentaires;
@@ -138,7 +137,6 @@ class Recettes
     }
 
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -171,7 +169,7 @@ class Recettes
         return $this->date;
     }
 
-    public function setDate(?\DateTimeInterface $date): self
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 

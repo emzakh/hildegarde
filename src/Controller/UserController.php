@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
+     * Permet d'afficher le profil d'un utilisateur
      * @Route("/user/{slug}", name="user_show")
      */
     public function index(User $user): Response

@@ -26,8 +26,6 @@ class ProduitController extends AbstractController
      */
     public function index($page, PaginationService $pagination, $categorie="all"): Response
     {
-     //  $repo = $this->getDoctrine()->getRepository(Produits::class)->findBy(['categorie'=>'Potager']);
-      //  dump($repo);
         if($categorie == "all"){
             $pagination->setEntityClass(Produits::class)
                 ->setPage($page)
@@ -36,10 +34,8 @@ class ProduitController extends AbstractController
             $pagination->setEntityClass(Produits::class)
                 ->setPage($page)
                 ->setCategory($categorie)
-                ->setLimit(4);
+                ->setLimit(6);
         }
-
-
 
 
 

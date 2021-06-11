@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class PaginationService {
     /**
      * Le nom de l'entité sur laquelle on veut effectuer une pagination
-     *
      * @var string
      */
     private $entityClass;
@@ -29,7 +28,6 @@ class PaginationService {
 
     /**
      * Le nombre d'enregistrement à récupérer
-     *
      * @var integer
      */
     private $limit = 10;
@@ -174,6 +172,7 @@ class PaginationService {
      *
      * @return array
      */
+
     public function getData() {
         if(empty($this->entityClass)) {
             throw new \Exception("Vous n'avez pas spécifié l'entité sur laquelle nous devons paginer ! Utilisez la méthode setEntityClass() de votre objet PaginationService !");

@@ -15,8 +15,6 @@ class HomeController extends AbstractController
      */
     public function index(RecettesRepository $recettesRepo): Response
     {
-
-
             return $this->render('home.html.twig', [
                 'recettes' => $recettesRepo->findBestRecettes(2)
 

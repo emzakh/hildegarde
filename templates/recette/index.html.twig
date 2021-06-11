@@ -4,7 +4,9 @@
 {% block title %}Nos recettes{% endblock %}
 
 {% block body %}
+    <section id="produitGallery">
     <div class="container container2">
+        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto">
         <h1 class="display-2 text-center mb-4 mt-4">Recette</h1>
         <div class="recetteIndexMobile">
             {% for recette in recettes %}
@@ -12,4 +14,5 @@
             {% endfor %}
         </div>
     </div>
+    </section>
 {% endblock %}

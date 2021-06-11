@@ -63,12 +63,12 @@ class Commentaires
         return $this->id;
     }
 
-    public function getContenu(): ?string
+    public function getContenu()
     {
         return $this->contenu;
     }
 
-    public function setContenu(string $contenu): self
+    public function setContenu($contenu): self
     {
         $this->contenu = $contenu;
 

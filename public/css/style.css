@@ -35,10 +35,16 @@ nav{
 
 
 }
+
+
 .subtitleHomepage{
     font-family: 'Raleway', sans-serif;
     font-size:30px;
 
+}
+
+.txtfilter{
+    font-size:16px;
 }
 
 .more{
@@ -165,7 +171,7 @@ font-size:22px;
     border-radius: 5px;
     text-align: center;
     color: #db584e;
-    margin-bottom: 30px;
+
 
 }
 .filter-button:hover
@@ -231,6 +237,14 @@ font-size:22px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.recettesContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
 }
 
 

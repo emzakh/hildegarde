@@ -11,7 +11,7 @@
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Auteur</th>
-
+                <th>Date</th>
                 <th class="text-center">Note</th>
                 <th class="text-center">Actions</th>
             </tr>
@@ -22,7 +22,7 @@
                     <td>{{recette.id}}</td>
                     <td>{{recette.titre}}</td>
                     <td>{{recette.author.fullName}}</td>
-
+                    <td>{{recette.date | date('d/m/Y H:i')}}</td>
                     <td class="text-center">
                         <span class="badge badge-primary rounded">{{recette.avgRatings }}</span>
                     </td>

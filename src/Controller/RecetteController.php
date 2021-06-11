@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
 
 class RecetteController extends AbstractController
 {
@@ -52,8 +53,6 @@ class RecetteController extends AbstractController
 
         $form->handleRequest($request);
 
-
-
         if($form->isSubmitted() && $form->isValid()){
 
             $file = $form['imgRecette']->getData();
@@ -75,6 +74,7 @@ class RecetteController extends AbstractController
                 $recette->setImgRecette($newFilename);
             }
             $recette->setAuthor($this->getUser());
+            $recette->setDate(new \DateTime());
             $manager->persist($recette);
             $manager->flush();
 
