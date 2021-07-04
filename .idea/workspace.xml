@@ -20,20 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5e40d4e-6093-4198-8f62-b309434e30cb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RecetteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210522142257.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaires.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Recettes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Recettes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/PaginationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/PaginationService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/recette/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/recette/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette/_recette.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/_recette.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,9 +162,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -217,6 +216,8 @@
       <workItem from="1623279748053" duration="5805000" />
       <workItem from="1623337376257" duration="12180000" />
       <workItem from="1623410079127" duration="14989000" />
+      <workItem from="1625399963396" duration="30000" />
+      <workItem from="1625400008659" duration="219000" />
     </task>
     <servers />
   </component>
@@ -234,77 +235,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="705" y="344" key="#Notifications" timestamp="1618404609468">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="705" y="344" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1618404609468" />
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621349623243">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1621349623243" />
-    <state x="724" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621691442276">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="724" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1621691442276" />
-    <state x="724" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1618409519312" />
-    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1623079182588">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1623079182588" />
-    <state x="685" y="266" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618932968618" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1621352106015">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1621352106015" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1618937732570">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618937732570" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1618937732570">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618937732570" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1618937732570">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618937732570" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1618937732570">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618937732570" />
-    <state x="775" y="243" key="NewPhpClassDialog" timestamp="1618922916647">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="775" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618922916647" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1618585565610">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618585565610" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1619448749734">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1619448749734" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1619439385356">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1619439385356" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623149762979">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1623149762979" />
-    <state x="-1479" y="0" width="1371" height="751" maximized="true" key="dock-window-1" timestamp="1623337989664">
-      <screen x="-1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="-1479" y="0" width="1371" height="751" maximized="true" key="dock-window-1/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1623337989664" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1622901230225">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1622901230225" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1618394295101">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618394295101" />
   </component>
 </project>

@@ -2,13 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentairesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommentairesRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CommentairesRepository::class)
  * @ORM\HasLifecycleCallbacks()
+ * @ApiResource(
+ * normalizationContext={"groups"={"read:commentaire"}},
+ * collectionOperations={"get"},
+ * itemOperations={"get"}
+ * )
  *
  */
 class Commentaires
@@ -17,12 +24,14 @@ class Commentaires
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read:commentaire"})
      */
     private $id;
 
     /**
      * @Assert\Length(min=2, max=500, minMessage="Le commentaire doit faire plus de 2 caractères", maxMessage="Le commentaire ne peut pas faire plus de 500 caractères")
      * @ORM\Column(type="text")
+     * @Groups({"read:commentaire"})
      */
     private $contenu;
 
@@ -38,11 +47,13 @@ class Commentaires
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commentaires")
+     * @Groups({"read:commentaire"})
      */
     private $author;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read:commentaire"})
      */
     private $createdAt;
 
